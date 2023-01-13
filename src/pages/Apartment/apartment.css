@@ -75,3 +75,18 @@
     font-size: 24px;
     
 }
+.aprtment-left-top{
+margin-bottom: 30px;
+display: flex;
+}
+.back-icon-apartment{
+    color: #AB3B61;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+.back-span-apartment{
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 5px;
+}

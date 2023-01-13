@@ -1,11 +1,14 @@
 .flat-div{
-    width: 160px;
-    height: 100px;
+    width: 170px;
+    height: 250px;
     color: #123D6A;
     font-weight: bold;
     display: grid;
+    justify-content: center;
     font-size: 13px;
-    margin-bottom: 130px;
+    margin-bottom: 70px;
+    border: 2px solid black;
+    border-radius: 5px;
     
 }
 .flat-img{
@@ -22,9 +25,9 @@
 }
 .flat-address{
     margin-top: 2px;
-    text-align: left;
+    text-align: center;
 }
 .flat-price{
     margin-top: 5px;
-    text-align: left;
+    text-align: center;
 }

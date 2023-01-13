@@ -7,14 +7,9 @@ import {useDispatch} from "react-redux"
 import { useEffect, useState } from "react";
 import { getSpacesById } from "../../features/backendRoutes/spaceSlice";
 import { useParams } from "react-router-dom";
-
-// const images = [
-//   { url: ApartmentImg },
-//   { url: ApartmentImg },
-//   { url: ApartmentImg }
-  
-// ];
-
+import {IoIosArrowBack} from "react-icons/io"
+import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export default function Apartment() {
 
@@ -35,12 +30,33 @@ export default function Apartment() {
   
   console.log(apartmentData);
 
+
+  const navigate = useNavigate();
+    
+  function handleClick(){
+     navigate(-1);
+  }
+
+ 
+  
   
   return (
+
+
+
+
     <div className="apartment-div">
-        <Topbar status={"show"}/>
+        <Topbar status={"hide"}/>
         <div className="apartment-container">
+         
           <div className="apartment-left">
+
+          <div className="aprtment-left-top">
+
+          <IoIosArrowBack className="back-icon-apartment" onClick={handleClick}/>
+          <span className="back-span-apartment" onClick={handleClick}>Back</span>
+          </div>
+
 
           {apartmentData ?  ( < SimpleImageSlider
         width={794}
@@ -59,9 +75,10 @@ export default function Apartment() {
           <p className="apartment-desc">Country:{apartmentData.country}</p>
           <p className="apartment-desc">{apartmentData.address}</p>
           <p className="apartment-desc">{apartmentData.detailed_description} </p>
-          <p className="apartment-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. </p>
-          <p className="apartment-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. </p>
-          <p className="apartment-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. </p>
+          <p className="apartment-desc">{apartmentData.detailed_description} </p>
+          <p className="apartment-desc">{apartmentData.detailed_description} </p>
+          <p className="apartment-desc">{apartmentData.detailed_description} </p>
+          <p className="apartment-desc">{apartmentData.detailed_description} </p>
              <span className="apartment-specification">{apartmentData.detailed_description}</span> 
             </div>
           ) : null}
@@ -75,8 +92,11 @@ export default function Apartment() {
              <div className="date-wrapper">
              <DatePicker style={{border:"2px solid #AB3B61"}} className="apartment-date" />
              <Select style={{border:"2px solid #AB3B61", borderRadius:"5px", inline:"none"}} className="select-people" placeholder="Number or people"/>
-             <button className="book-now-btn">Book right now !</button> 
+             
               </div> 
+              <Link to={`/checkout/${id}`} style={{ textDecoration: "none" }}>
+              <button className="book-now-btn">Book now !</button> 
+              </Link>
              </div>
           </div>
         </div>

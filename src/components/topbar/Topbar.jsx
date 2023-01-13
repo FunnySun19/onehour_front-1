@@ -3,13 +3,16 @@ import "./topbar.css"
 import Logo from "../../assets/img/logo.png"
 import { DatePicker, Select } from 'antd';
 import Menu from "../../assets/img/menu.png"
+import { Link } from "react-router-dom";
 
 
 export default function (props) {
   return (
     <div className="topbar-container">
         <div className="logo-container">
+        <Link to={"/"} style={{ textDecoration: "none" }}>
         <img src={Logo} alt="" className='logo-img'/>
+        </Link>
         </div>
         {props.status === "show" &&  <div className="button-container">
              <DatePicker className='date-selector' size='large'/>
@@ -36,9 +39,7 @@ export default function (props) {
                 }
               ]}/>
         </div>}
-        <div className="menu-container">
-            <img src={Menu} alt="" className='menu-img'/>
-        </div>
+       
     </div>
   )
 }

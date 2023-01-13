@@ -10,11 +10,11 @@ export const onehourRoutes = [
     Component: Home,
 },
 {
-    path: "/checkout",
+    path: "/checkout/:id",
     Component: Checkout,
 },
 {
-    path: "/apartment/:id",
+    path: "/space/:id",
     Component: Apartment,
 }
 ]
