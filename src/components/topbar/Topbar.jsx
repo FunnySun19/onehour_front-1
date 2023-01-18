@@ -27,6 +27,7 @@ export default function (props) {
         </Link>
         </div>
         {props.status === "show" &&  <div className="button-container">
+<<<<<<< HEAD
               <RangePicker
                 size="large"
                 className='date-selector'
@@ -35,6 +36,15 @@ export default function (props) {
                 showTime={{ format: "HH"}}
                 onChange={onChangeRange} />
             
+=======
+             <RangePicker 
+                className='date-selector' 
+                size='large' 
+                format="DD/MM/YYYY HH:00" 
+                showTime={{ format: "HH"}} 
+                onChange={onChangeRange} />
+
+>>>>>>> be25515b18c25a0cce8cee581258d20ddc6f97aa
               <Select  placeholder="Select City"  className='city-selector'size='large' showSearch
              options={[
                 {
