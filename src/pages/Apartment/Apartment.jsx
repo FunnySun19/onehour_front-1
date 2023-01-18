@@ -48,16 +48,11 @@ export default function Apartment() {
         console.log(null);
         console.log(null);
     }
-<<<<<<< HEAD
   }
 
  
   
   
-=======
-};
-
->>>>>>> be25515b18c25a0cce8cee581258d20ddc6f97aa
   return (
 
 
@@ -109,19 +104,12 @@ export default function Apartment() {
              <span className="perNight-span">per night</span>
              <div className="date-wrapper">
              <RangePicker
-<<<<<<< HEAD
                 size="large"
                 style={{border:"2px solid #AB3B61"}} 
                 className="apartment-date"
                 renderExtraFooter={() => 'Press OK to confirm'}
                 format="DD/MM/YYYY HH:00" 
                 showTime={{ format: "HH"}}
-=======
-                style={{border:"2px solid #AB3B61"}} 
-                className="apartment-date"
-                format="DD/MM/YYYY HH:00" 
-                showTime={{ format: "HH"}} 
->>>>>>> be25515b18c25a0cce8cee581258d20ddc6f97aa
                 onChange={onChangeRange} />
              <Select style={{border:"2px solid #AB3B61", borderRadius:"5px", inline:"none"}} className="select-people" placeholder="Number or people"/>
              
