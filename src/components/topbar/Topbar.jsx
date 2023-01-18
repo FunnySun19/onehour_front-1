@@ -4,9 +4,21 @@ import Logo from "../../assets/img/logo.png"
 import { DatePicker, Select } from 'antd';
 import Menu from "../../assets/img/menu.png"
 import { Link } from "react-router-dom";
-
+import moment from 'moment/moment';
 
 export default function (props) {
+  const { RangePicker } = DatePicker;
+  
+  const onChangeRange = (dates, dateStrings) => {
+    if (dates) {
+        console.log(encodeURIComponent(moment(dateStrings[0], 'DD/MM/YYYY HH').format()));
+        console.log(encodeURIComponent(moment(dateStrings[1], 'DD/MM/YYYY HH').format()))
+    } else {
+        console.log(null);
+        console.log(null);
+    }
+};
+
   return (
     <div className="topbar-container">
         <div className="logo-container">
@@ -15,7 +27,13 @@ export default function (props) {
         </Link>
         </div>
         {props.status === "show" &&  <div className="button-container">
-             <DatePicker className='date-selector' size='large'/>
+              <RangePicker
+                size="large"
+                className='date-selector'
+                renderExtraFooter={() => 'Press OK to confirm'}
+                format="DD/MM/YYYY HH:00" 
+                showTime={{ format: "HH"}}
+                onChange={onChangeRange} />
             
               <Select  placeholder="Select City"  className='city-selector'size='large' showSearch
              options={[
