@@ -9,17 +9,20 @@
     margin-top: 30px;
     width: 100%;
     height: 100%;
+    justify-content: center;
+    align-items: center;
 }
 .apartment-left{
-    margin-top: 10px;
-    margin-left: 30px;
-    width: 100%;
+    margin-top: 0.5%;
+    margin-left: 3%;
+    width: 50%;
     height: 100%;
 }
 .apartment-right{
-    margin-left: 80px;
+    margin-top: 0.5%;
+    margin-left: 10%;
     display: grid;
-    width: 100%;
+    width: 50%;
     height: 100%;
 
 }
