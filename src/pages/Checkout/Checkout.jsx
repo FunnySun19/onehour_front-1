@@ -2,16 +2,30 @@ import "./checkout.css"
 import Topbar from '../../components/topbar/Topbar'
 import {IoIosArrowBack} from "react-icons/io"
 import { DatePicker } from 'antd';
-import { MapContainer, TileLayer, } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker,Popup} from 'react-leaflet';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import icon from "leaflet/dist/images/marker-icon.png";
+import iconShadow from "leaflet/dist/images/marker-shadow.png";
+import L from "leaflet";
+
 
 export default function () {
-    
+
+    const space = useSelector(state => state.space.singleSpace);
+    console.log(space)
+
+
     const navigate = useNavigate();
     
     function handleClick(){
        navigate(-1);
     }
+
+    const DefaultIcon = L.icon({
+        iconUrl: icon,
+        shadowUrl: iconShadow,
+      });
 
   return (
     <div className="checkout-div">
@@ -42,18 +56,23 @@ export default function () {
             </div>
             <div className="checkout-right">
                 <h4 className="description-h4">Description</h4>
-                <p>
-                Lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lore <br />
-                Lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lore<br />
-                Lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lore
-                </p>
+                <p>{space.detailed_description}</p>
                 <h4 className="address-h4">Address</h4>
-                <p className="address-p">Gavrila Principa 60, Krusevac Srbija</p>
+                <p className="address-p">{space.address}</p>
             <MapContainer  className='checkout-map' center={[44.804,20.4651]} zoom={13}>
                 <TileLayer
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
+                <Marker
+                  key={space.id}
+                  position={[space.lat, space.lng]}
+                  icon={DefaultIcon}
+                >
+                  <Popup >
+                     {space.name} 
+                    </Popup>
+                </Marker>
                 </MapContainer>
             </div>
             </div>

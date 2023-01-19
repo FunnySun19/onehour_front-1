@@ -10,7 +10,7 @@
    
 }
 .map-container{
-    margin-left: 65px;
+    margin-left: 0px;
     
 }
 .leaflet-map{
@@ -19,8 +19,8 @@
  width: 732px;
 }
 .flat-container{
-  margin-left: 20px;
-    width: 1220px;
+  
+    width: 1000px;
     min-height: 30rem;
     overflow: hidden;
     direction: rtl;
