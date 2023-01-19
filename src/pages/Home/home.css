@@ -18,6 +18,11 @@
  height: 471px;
  width: 732px;
 }
+
+.leaflet-control-attribution {
+  display: none !important;
+}
+
 .flat-container{
   
     width: 1000px;

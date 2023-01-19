@@ -4,11 +4,11 @@ import {IoIosArrowBack} from "react-icons/io"
 import { DatePicker } from 'antd';
 import { MapContainer, TileLayer, Marker,Popup} from 'react-leaflet';
 import { useNavigate } from 'react-router-dom';
+import moment from "moment";
 import { useSelector } from 'react-redux';
 import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
 import L from "leaflet";
-
 
 export default function () {
 
@@ -20,6 +20,18 @@ export default function () {
     
     function handleClick(){
        navigate(-1);
+    }
+
+    const { RangePicker } = DatePicker;
+  
+    const onChangeRange = (dates, dateStrings) => {
+      if (dates) {
+          console.log(encodeURIComponent(moment(dateStrings[0], 'DD/MM/YYYY HH').format()));
+          console.log(encodeURIComponent(moment(dateStrings[1], 'DD/MM/YYYY HH').format()))
+      } else {
+          console.log(null);
+          console.log(null);
+      }
     }
 
     const DefaultIcon = L.icon({
@@ -39,8 +51,13 @@ export default function () {
             <div className="checkout-left">
                 <span className="booking-period-span">Booking period</span>
                 <div className="booking-period-div">
-                <DatePicker className='chechkout-arrive-date' />
-                <DatePicker className='checkout-leave-date' />
+                <RangePicker
+                size="large"
+                className="chechkout-date"
+                renderExtraFooter={() => 'Press OK to confirm'}
+                format="DD/MM/YYYY HH:00" 
+                showTime={{ format: "HH"}}
+                onChange={onChangeRange} />
                 </div>
                 <span className="surename-span">Surname</span>
                 <input type="text" className="surename-input" required/>

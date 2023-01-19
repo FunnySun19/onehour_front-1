@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom";
 import {IoIosArrowBack} from "react-icons/io"
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 export default function Apartment() {
 
@@ -35,6 +36,18 @@ export default function Apartment() {
     
   function handleClick(){
      navigate(-1);
+  }
+
+  const { RangePicker } = DatePicker;
+  
+  const onChangeRange = (dates, dateStrings) => {
+    if (dates) {
+        console.log(encodeURIComponent(moment(dateStrings[0], 'DD/MM/YYYY HH').format()));
+        console.log(encodeURIComponent(moment(dateStrings[1], 'DD/MM/YYYY HH').format()))
+    } else {
+        console.log(null);
+        console.log(null);
+    }
   }
 
  
@@ -90,7 +103,14 @@ export default function Apartment() {
              ) : null}
              <span className="perNight-span">per night</span>
              <div className="date-wrapper">
-             <DatePicker style={{border:"2px solid #AB3B61"}} className="apartment-date" />
+             <RangePicker
+                size="large"
+                style={{border:"2px solid #AB3B61"}} 
+                className="apartment-date"
+                renderExtraFooter={() => 'Press OK to confirm'}
+                format="DD/MM/YYYY HH:00" 
+                showTime={{ format: "HH"}}
+                onChange={onChangeRange} />
              <Select style={{border:"2px solid #AB3B61", borderRadius:"5px", inline:"none"}} className="select-people" placeholder="Number or people"/>
              
               </div> 
