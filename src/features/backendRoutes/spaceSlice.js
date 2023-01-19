@@ -104,7 +104,9 @@ const spaceSlice = createSlice({
     },
     [getSpacesById.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
-      state.space = payload.data;
+      state.singleSpace = payload;
+      console.log(state.singleSpace);
+
     },
     [getSpacesById.rejected]: (state, { payload }) => {
       state.isLoading = false;

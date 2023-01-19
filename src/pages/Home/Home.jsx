@@ -28,9 +28,8 @@ export default function Home() {
   const LatLong = [44.804, 20.4651];
 
   const handleScroll = (e) => {
-    const bottom =
-      e.currentTarget.scrollHeight - e.currentTarget.scrollTop ===
-      e.currentTarget.clientHeight;
+    const { scrollHeight, scrollTop, clientHeight } = e.currentTarget
+    const bottom = Math.abs(scrollHeight - clientHeight - scrollTop) < 10
 
       console.log( e.currentTarget.scrollHeight);
       console.log(e.currentTarget.scrollTop);
