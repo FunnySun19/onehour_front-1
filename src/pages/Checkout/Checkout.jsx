@@ -9,8 +9,10 @@ import { useSelector } from 'react-redux';
 import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
 import L from "leaflet";
+import { useState } from 'react';
 
 export default function () {
+  const [days, setDays] = useState(0);
 
     const space = useSelector(state => state.space.singleSpace);
     console.log(space)
@@ -28,6 +30,8 @@ export default function () {
       if (dates) {
           console.log(encodeURIComponent(moment(dateStrings[0], 'DD/MM/YYYY HH').format()));
           console.log(encodeURIComponent(moment(dateStrings[1], 'DD/MM/YYYY HH').format()))
+          const daysBetween = new Date(moment(dateStrings[1], 'DD/MM/YYYY HH').format()).getDate() - new Date(moment(dateStrings[0], 'DD/MM/YYYY HH').format()).getDate();
+          setDays(daysBetween);
       } else {
           console.log(null);
           console.log(null);
@@ -38,6 +42,8 @@ export default function () {
         iconUrl: icon,
         shadowUrl: iconShadow,
       });
+
+    const totalCost = space.price*days;
 
   return (
     <div className="checkout-div">
@@ -67,8 +73,8 @@ export default function () {
                 <input type="text" className="phone-input" required/>
                 <span className="email-span">Email</span>
                 <input type="email" className="email-input" required/>
-                <span className="cost-span">Total Cost: <span className="price-span">1500$</span></span>
-                <span className="price-per-day-span">300$ x 5 days</span>
+                <span className="cost-span">Total Cost: <span className="price-span">{totalCost}$</span></span>
+                <span className="price-per-day-span">{space.price}$ x {days} days</span>
                 <button className="confirm-btn" type="submit" >Book Now</button>
             </div>
             <div className="checkout-right">
