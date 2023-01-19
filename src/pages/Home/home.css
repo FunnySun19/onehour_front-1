@@ -2,37 +2,39 @@
     width: 100%;
     height: 100vh;
     background-color: #FAF4F0;
-}
-.home-content{
-    margin-top: 106px;
-    display: flex;
-    margin-left: 11px;
    
 }
+.home-content{
+    margin-top: 5%;
+    display: flex;
+    margin-left: 20px;
+    justify-content: center;
+    align-items: center;
+}
 .map-container{
-    margin-left: 0px;
-    
+    width: 50%;
+    margin-left: 5%;
+    margin-right: 2.5%;
 }
 .leaflet-map{
  
- height: 471px;
- width: 732px;
+ height: 530px;
+ width: 700px;
 }
 .flat-container{
-  
-    width: 1000px;
+   width: 50%;
     min-height: 30rem;
     overflow: hidden;
     direction: rtl;
-    margin-right: 40px;
+   
 }
 .flatwrapper{
+  margin-left: 100px;
   display: grid;
   grid-template-columns: 250px 250px 250px;
     overflow: scroll;
     width: 100%;
-    height: 470px;
-  
+    height: 530px;
     scrollbar-width: auto;
     scrollbar-color: #edc8b8 #f9eee8;
   
