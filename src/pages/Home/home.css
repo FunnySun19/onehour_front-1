@@ -21,6 +21,11 @@
  height: 530px;
  width: 700px;
 }
+
+.leaflet-control-attribution {
+  display: none !important;
+}
+
 .flat-container{
    width: 50%;
     min-height: 30rem;

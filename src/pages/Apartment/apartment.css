@@ -58,7 +58,7 @@
 }
 .apartment-date{
    
-    width: 200px;
+    width: 300px;
     height: 36px;
 }
 .select-people{
@@ -70,7 +70,7 @@
 .book-now-btn{
     height: 44px;
     margin-top: 20px;
-    width: 410px;
+    width: 510px;
     border: none;
     border-radius: 5px;
     background-color: #AB3B61;

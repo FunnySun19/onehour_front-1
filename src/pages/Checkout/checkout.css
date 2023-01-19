@@ -40,15 +40,13 @@
     display: flex;
     margin-bottom: 20px;
 }
-.chechkout-arrive-date{
-   width: 147px;
+.chechkout-date{
+   width: 310px;
    margin-right: 16px;
    background-color: #FAF4F0;
-}
-.checkout-leave-date{
-    width: 147px;
-    background-color: #FAF4F0;
-    
+   border-color: #123D6A;
+   border-inline-color: #123D6A;
+   border-radius: 5px;
 }
 
 /* checkout left spans */
