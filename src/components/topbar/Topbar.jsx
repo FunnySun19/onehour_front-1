@@ -19,6 +19,17 @@ export default function (props) {
     }
 };
 
+  const handleSelect = (value,name) =>{
+    props.setData([]);
+    props.setParams(prev =>{
+      const copy = {...prev};
+      copy[name] = value;
+      return copy;
+    })
+  }
+
+
+
   return (
     <div className="topbar-container">
         <div className="logo-container">
@@ -35,18 +46,19 @@ export default function (props) {
                 showTime={{ format: "HH"}}
                 onChange={onChangeRange} />
             
-              <Select  placeholder="Select City"  className='city-selector'size='large' showSearch
+              <Select  placeholder="Select City" name="city" onChange={(value)=>handleSelect(value,"city")} 
+              className='city-selector'size='large' showSearch
              options={[
                 {
-                  value: 'Beograd',
-                  label: 'Beograd',
+                  value: 'Krusevac',
+                  label: 'Krusevac',
                 },
                 {
                   value: 'Ivanovo',
                   label: 'Ivanovo',
                 }
               ]}/>
-            <Select    placeholder="Select Type"className='type-selector'size='large'options={[
+            <Select    placeholder="Select Type" className='type-selector'size='large'options={[
                 {
                   value: 'Type 1',
                   label: 'Type 1',
