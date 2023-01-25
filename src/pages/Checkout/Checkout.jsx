@@ -18,6 +18,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function () {
   const [days, setDays] = useState(0);
+  const [dateFrom, setDateFrom] = useState(null);
+  const [dateTo, setDateTo] = useState(null);
   const [state, setState] = useState({});
   const [values, setValues] = useState({
     last_name: "",
@@ -42,10 +44,15 @@ export default function () {
   
     const onChangeRange = (dates, dateStrings) => {
       if (dates) {
-          console.log(encodeURIComponent(moment(dateStrings[0], 'DD/MM/YYYY HH').format()));
-          console.log(encodeURIComponent(moment(dateStrings[1], 'DD/MM/YYYY HH').format()))
-          const daysBetween = new Date(moment(dateStrings[1], 'DD/MM/YYYY HH').format()).getDate() - new Date(moment(dateStrings[0], 'DD/MM/YYYY HH').format()).getDate();
-          setDays(daysBetween);
+          setDateFrom(encodeURIComponent(moment(dateStrings[0], 'DD/MM/YYYY HH').format()));
+          setDateTo(encodeURIComponent(moment(dateStrings[1], 'DD/MM/YYYY HH').format()));
+          let date_from = new Date(moment(dateStrings[0], 'DD.MM.YYYY').format('YYYY, MM, DD'));
+          let date_to = new Date(moment(dateStrings[1], 'DD.MM.YYYY').format('YYYY, MM, DD'));
+          function diffDates(date_to, date_from) {
+            return (date_from - date_to) / (60 * 60 *24 * 1000);
+        };
+        setDays(diffDates(date_from, date_to));
+
       } else {
           console.log(null);
           console.log(null);
