@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
 import L from "leaflet";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { addRent } from "../../features/backendRoutes/rentSlice";
 import Input from "../../components/Input/Input"
 import { ToastContainer, toast } from 'react-toastify';
@@ -17,7 +17,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function () {
+  
   const [days, setDays] = useState(0);
+  const [dateRange, setDateRange] = useState([]);
   const [dateFrom, setDateFrom] = useState(null);
   const [dateTo, setDateTo] = useState(null);
   const [state, setState] = useState({});
@@ -30,7 +32,7 @@ export default function () {
   let isFormValid = true;
 
 
-  const notify = () => {toast('Booking Confirmed', { type: 'success' });}
+  const notify = () => {toast('Booking Confirmed, page will refresh in 7 sec', { type: 'success' });}
   const notifyError = () => {toast('Please fill all fields!', { type: 'error' });}
 
     const space = useSelector(state => state.space.singleSpace);
@@ -42,20 +44,18 @@ export default function () {
 
     const { RangePicker } = DatePicker;
   
+
     const onChangeRange = (dates, dateStrings) => {
       if (dates) {
-          setDateFrom(encodeURIComponent(moment(dateStrings[0], 'DD/MM/YYYY HH').format()));
-          setDateTo(encodeURIComponent(moment(dateStrings[1], 'DD/MM/YYYY HH').format()));
+        setDateFrom(moment(dateStrings[0], 'DD/MM/YYYY HH').format('YYYY-MM-DDTHH:mmZ'));
+        setDateTo(moment(dateStrings[1], 'DD/MM/YYYY HH').format('YYYY-MM-DDTHH:mmZ'));
+        setDateRange(dates);
           let date_from = new Date(moment(dateStrings[0], 'DD.MM.YYYY').format('YYYY, MM, DD'));
           let date_to = new Date(moment(dateStrings[1], 'DD.MM.YYYY').format('YYYY, MM, DD'));
           function diffDates(date_to, date_from) {
             return (date_from - date_to) / (60 * 60 *24 * 1000);
         };
         setDays(diffDates(date_from, date_to));
-
-      } else {
-          console.log(null);
-          console.log(null);
       }
     }
 
@@ -91,16 +91,24 @@ export default function () {
     
     const {id} = useParams();
    
-    const handleSubmit = (e) =>{
+    const handleSubmit = async(e) =>{
       e.preventDefault();
       validateForm();
-      if (!isFormValid) {
+      if (!isFormValid || dateRange.length === 0) {
         notifyError();
       } else {
-        dispatch(addRent({...state,space_id:id, datetime_from: "2022-11-01T21:30+00",
-        datetime_to: "2022-12-01T22:00+00"}))
-        notify();
+     const resp = await dispatch(addRent({...state,space_id:id, datetime_from: dateFrom,
+        datetime_to: dateTo}))
+        console.log(resp);
+        if (resp.meta.requestStatus === 'fulfilled') {
+          notify();
+          setTimeout(()=>{
+            navigate("/");
+          }, 7000)
+           
+        }
       }}
+
 
     const inputs = [
       {
@@ -168,12 +176,7 @@ export default function () {
                 </div>
 
                 {inputs.map((input) => (
-               <Input
-                key={input.id}
-                {...input}
-                value={values[input.name]}
-                onChange={handleChange}
-                />
+               <Input key={input.id} {...input}  value={values[input.name]}   onChange={handleChange}/>
                 ))}
 
                 <span className="cost-span">Total Cost: <span className="price-span">{totalCost}$</span></span>

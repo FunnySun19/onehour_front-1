@@ -10,12 +10,14 @@ const initialState = {
 
 export const addRent = createAsyncThunk(
     "rent/addRent",
+    
     async (rent, thunkAPI) => {
       try {
-        const resp = await baseUrl.post("rent", rent, thunkAPI);
+        const resp = await baseUrl.post("rent/", rent, thunkAPI);
   
         return resp.data;
       } catch (error) {
+        
         return thunkAPI.rejectWithValue(error);
       }
     }
@@ -31,8 +33,10 @@ const rentSlice = createSlice({
         
         toast.success("Space added");
       },
-      [addRent.rejected]: (state) => {
+      [addRent.rejected]: (state,{payload}) => {
         state.isLoading = false;
+        console.log(payload);
+        toast.error(payload.response.data.detail[1].msg) ;
       },
     }
 })
