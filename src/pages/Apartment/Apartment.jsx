@@ -3,7 +3,7 @@ import Topbar from '../../components/topbar/Topbar'
 import ApartmentImg from "../../assets/img/apartment.jpg"
 import SimpleImageSlider from "react-simple-image-slider";
 import { DatePicker, Select } from 'antd';
-import {useDispatch} from "react-redux"
+import {useDispatch} from "react-redux";
 import { useEffect, useState } from "react";
 import { getSpacesById } from "../../features/backendRoutes/spaceSlice";
 import { useParams } from "react-router-dom";

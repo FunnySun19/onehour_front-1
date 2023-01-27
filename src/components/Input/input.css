@@ -1,0 +1,32 @@
+.formInput{
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+}
+
+.checkout-label{
+    margin-bottom: 7px;
+}
+.checkout-input{
+    margin-bottom: 10px;
+    width: 307px;
+    height: 32px;
+    border-color: #123D6A;
+    border-inline-color: #123D6A;
+    border-radius: 5px;
+    background-color: #FAF4F0;
+}
+.checkout-span{
+    font-size: 12px;
+    padding: 3px;
+    color: red;
+    display: none;
+}
+
+.checkout-input:invalid[focused="true"]{
+    border: 1px solid red;
+}
+
+.checkout-input:invalid[focused="true"] ~ .checkout-span{
+    display: block;
+}

@@ -14,7 +14,8 @@ import { Link } from "react-router-dom";
 export default function Home() {
   const [params, setParams] = useState({
     offset: 0,
-  limit: 10
+  limit: 10,
+  city:"",
     
   });
   const [data, setData] = useState([]);
@@ -31,9 +32,7 @@ export default function Home() {
     const { scrollHeight, scrollTop, clientHeight } = e.currentTarget
     const bottom = Math.abs(scrollHeight - clientHeight - scrollTop) < 10
 
-      console.log( e.currentTarget.scrollHeight);
-      console.log(e.currentTarget.scrollTop);
-      console.log(e.currentTarget.clientHeight);
+     
 
     if (bottom) {
       setParams((prev) => {
@@ -44,10 +43,10 @@ export default function Home() {
     }
   };
   usePaginate("space/", params, setData)
-console.log(data);
+
   return (
     <div className="home-container">
-      <Topbar status={"show"} />
+      <Topbar status={"show"} setParams={setParams} setData={setData}/>
       <div className="home-content">
         <div className="flat-container">
           <div className="flatwrapper" onScroll={handleScroll}>
