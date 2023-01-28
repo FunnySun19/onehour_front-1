@@ -17,8 +17,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function () {
-  
-  const [days, setDays] = useState(0);
+  const [hours, setHours] = useState(0);
   const [dateRange, setDateRange] = useState([]);
   const [dateFrom, setDateFrom] = useState(null);
   const [dateTo, setDateTo] = useState(null);
@@ -43,19 +42,21 @@ export default function () {
     }
 
     const { RangePicker } = DatePicker;
-  
-
+    
     const onChangeRange = (dates, dateStrings) => {
       if (dates) {
-        setDateFrom(moment(dateStrings[0], 'DD/MM/YYYY HH').format('YYYY-MM-DDTHH:mmZ'));
-        setDateTo(moment(dateStrings[1], 'DD/MM/YYYY HH').format('YYYY-MM-DDTHH:mmZ'));
-        setDateRange(dates);
-          let date_from = new Date(moment(dateStrings[0], 'DD.MM.YYYY').format('YYYY, MM, DD'));
-          let date_to = new Date(moment(dateStrings[1], 'DD.MM.YYYY').format('YYYY, MM, DD'));
+          setDateFrom(encodeURIComponent(moment(dateStrings[0], 'DD/MM/YYYY HH').format()));
+          setDateTo(encodeURIComponent(moment(dateStrings[1], 'DD/MM/YYYY HH').format()));
+          let date_from = new Date(moment(dateStrings[0], 'DD.MM.YYYY HH').format('YYYY, MM, DD, HH:00'));
+          let date_to = new Date(moment(dateStrings[1], 'DD.MM.YYYY HH').format('YYYY, MM, DD, HH:00'));
           function diffDates(date_to, date_from) {
-            return (date_from - date_to) / (60 * 60 *24 * 1000);
+            return (date_from - date_to) / 1000 /3600;
         };
-        setDays(diffDates(date_from, date_to));
+        setHours(diffDates(date_from, date_to));
+
+      } else {
+        setHours(0);
+        
       }
     }
 
@@ -64,7 +65,7 @@ export default function () {
         shadowUrl: iconShadow,
       });
 
-    const totalCost = space.price*days;
+    const totalCost = space.price*hours;
 
     const dispatch = useDispatch();
 
@@ -169,8 +170,12 @@ export default function () {
                 size="large"
                 className="chechkout-date"
                 renderExtraFooter={() => 'Press OK to confirm'}
-                format="DD/MM/YYYY HH:00" 
+                format="DD/MM/YYYY HH"
                 showTime={{ format: "HH"}}
+                disabledDate={(current) => {
+                  let customDate = moment().format("YYYY-MM-DD");
+                  return current < moment(customDate, "YYYY-MM-DD");
+                }}
                 onChange={onChangeRange} 
                 required/>
                 </div>
@@ -180,10 +185,8 @@ export default function () {
                 ))}
 
                 <span className="cost-span">Total Cost: <span className="price-span">{totalCost}$</span></span>
-                <span className="price-per-day-span">{space.price}$ x {days} days</span>
+                <span className="price-per-day-span">{space.price}$ x {hours} hours</span>
                 <button className="confirm-btn" type="submit" onClick={handleSubmit}>Book Now</button>
-               
-                
             </div>
            
             <div className="checkout-right">
