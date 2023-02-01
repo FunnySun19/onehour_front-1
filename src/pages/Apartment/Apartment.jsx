@@ -28,7 +28,6 @@ export default function Apartment() {
       });
   }, []);
 
-  console.log(apartmentData);
 
   const navigate = useNavigate();
 

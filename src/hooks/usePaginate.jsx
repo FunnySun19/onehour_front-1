@@ -17,7 +17,6 @@ export const usePaginate = (link,params,setList) => {
                 setList((prev) => {
                   let copy = [...prev]
                   copy = [...copy, ...res.data]
-                  console.log(copy);
                   return copy;
                 })
               })

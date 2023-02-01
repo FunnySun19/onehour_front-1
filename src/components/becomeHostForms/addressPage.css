@@ -1,0 +1,101 @@
+.AddressPage-main-div{
+   background-color:  #FAF4F0;
+   height: calc(100vh - 95px);
+}
+
+.AddressPage-h2{
+    width: 100%;
+    height: 100%;
+}
+.AddressPage-top-div{
+    width: 100%;
+    display: flex;
+    height: 100px;
+}
+.AddressPage-back-icon{
+    margin-top: 20px;
+    cursor: pointer;
+    color: #AB3B61;
+    height: 40px;
+    width: 40px;
+    margin-left: 10%;
+}
+.AddressPage-back-span{
+    margin-top: 27px;
+    cursor:pointer;
+}
+.AddressPage-h2{
+    color: #123D6A;
+    margin-left: 30%;
+}
+.AddressPage-center-div{
+    margin-top: 40px;
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+.AddressPage-input{
+    margin-bottom: 30px;
+    width: 350px;
+    height: 20px;
+    border: 2px solid #AB3B61;
+    border-radius: 2px;
+    outline: none;
+    background-color: #FAF4F0;
+}
+.AddressPage-label{
+    color: #123D6A;
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: bold;
+}
+.AddressPage-bot-div{
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+.AddressPage-label-div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.AddressPage-label-latlng{
+    margin-right: 110px;
+    margin-left: 30px; 
+    color: #123D6A;
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: bold;
+}
+.AddressPage-input-div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.AddressPage-input-latlng{
+    margin-bottom: 30px;
+    margin-right: 20px;
+    margin-left: 20px;
+    width: 150px;
+    height: 20px;
+    border: 2px solid #AB3B61;
+    border-radius: 2px;
+    outline: none;
+    background-color: #FAF4F0;
+}
+.AddressPage-btn{
+    background-color: #AB3B61;
+    font-weight: bold;
+    color: #FFF;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+    height: 40px;
+    width: 300px;
+    margin-left: 14%;
+}
