@@ -1,0 +1,36 @@
+.FinishPage-main-div{
+    background-color:  #FAF4F0;
+    height: calc(100vh - 95px);
+   
+  }
+  .FinishPage-back-div{
+    display: flex;
+  }
+ .FinishPage-center-div{
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+ }
+  .FinishPage-h2{
+    margin-top: 10%;
+    text-align: center;
+  }
+  .FinishPage-h2-2{
+    margin: 0;
+    margin-top: 5px;
+    margin-bottom: 30px;
+  }
+  
+  .FinishPage-btn{
+    background-color: #AB3B61;
+    font-weight: bold;
+    color: #FFF;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 360px;
+    height: 40px;
+  
+  }

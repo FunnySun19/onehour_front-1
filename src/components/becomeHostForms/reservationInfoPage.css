@@ -1,0 +1,104 @@
+.ReservationInfoPage-main-div{
+    background-color:  #FAF4F0;
+    height: calc(100vh - 95px);
+ }
+ 
+
+ .ReservationInfoPage-top-div{
+     width: 100%;
+     display: flex;
+     height: 100px;
+ }
+ .ReservationInfoPage-back-icon{
+     margin-top: 20px;
+     cursor: pointer;
+     color: #AB3B61;
+     height: 40px;
+     width: 40px;
+     margin-left: 10%;
+ }
+ .ReservationInfoPage-back-span{
+     margin-top: 27px;
+     cursor:pointer;
+ }
+ .ReservationInfoPage-h2{
+     color: #123D6A;
+     margin-left: 30%;
+ }
+ .ReservationInfoPage-center-div{
+    margin-top: 20px;
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+.ReservationInfoPage-input{
+    margin-bottom: 30px;
+    width: 350px;
+    height: 20px;
+    border: 2px solid #AB3B61;
+    border-radius: 2px;
+    outline: none;
+    background-color: #FAF4F0;
+}
+.ReservationInfoPage-label{
+    color: #123D6A;
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: bold;
+}
+.ReservationInfoPage-bot-div{
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+.ReservationInfoPage-label-div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ReservationInfoPage-label-available{
+    margin-right: 82px;
+    margin-left: 12px; 
+    color: #123D6A;
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: bold;
+}
+.ReservationInfoPage-input-div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ReservationInfoPage-input-available{
+    margin-bottom: 30px;
+    margin-right: 20px;
+    margin-left: 20px;
+    width: 150px;
+    height: 20px;
+    border: 2px solid #AB3B61;
+    border-radius: 2px;
+    outline: none;
+    background-color: #FAF4F0;
+}
+.ReservationInfoPage{
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+.ReservationInfoPage-btn{
+    background-color: #AB3B61;
+    font-weight: bold;
+    color: #FFF;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 350px;
+    height: 40px;
+    margin-left: 5%;
+}
