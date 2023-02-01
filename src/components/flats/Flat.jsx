@@ -9,8 +9,8 @@ export default function Flat(props) {
     <div className="flat-div">
         <Link to={`/space/${props.item.id}`} style={{ textDecoration: "none" }}>
         <img src={props.item.image_urls} alt="" className="flat-img"/>
-        </Link>
         <span className="flat-title">{props.item.name}</span>
+        </Link>
         <span className="flat-address">{props.item.address}</span>
         <span className="flat-price">PRICE:{props.item.price}$ per night</span>
     </div>

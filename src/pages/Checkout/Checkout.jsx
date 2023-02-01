@@ -167,17 +167,18 @@ export default function () {
 
                 <div className="booking-period-div">
                 <RangePicker
-                size="large"
-                className="chechkout-date"
-                renderExtraFooter={() => 'Press OK to confirm'}
-                format="DD/MM/YYYY HH"
-                showTime={{ format: "HH"}}
-                disabledDate={(current) => {
-                  let customDate = moment().format("YYYY-MM-DD");
-                  return current < moment(customDate, "YYYY-MM-DD");
-                }}
-                onChange={onChangeRange} 
-                required/>
+                  size="large"
+                  className="chechkout-date"
+                  renderExtraFooter={() => 'Press OK to confirm'}
+                  format="DD/MM/YYYY HH"
+                  showTime={{ format: "HH"}}
+                  disabledDate={(current) => {
+                    let fromDate = moment(space.available_from).format("YYYY-MM-DD");
+                    let toDate = moment(space.available_to).format("YYYY-MM-DD");
+                    return current < moment(fromDate, "YYYY-MM-DD") || current > moment(toDate, "YYYY-MM-DD").add(1, 'days');
+                  }}
+                  onChange={onChangeRange} 
+                  required/>
                 </div>
 
                 {inputs.map((input) => (

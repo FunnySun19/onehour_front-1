@@ -101,7 +101,7 @@ export default function Apartment() {
              {apartmentData ?(
              <span className="apartment-price">{apartmentData.price}$</span>
              ) : null}
-             <span className="perNight-span">per night</span>
+             <span className="perNight-span">per hour</span>
              <div className="date-wrapper">
              <RangePicker
                 size="large"
