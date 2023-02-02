@@ -3,7 +3,7 @@ import "./addressPage.css";
 import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate} from "react-router-dom";
 
-export default function AddressPage() {
+export default function AddressPage({ setShowPage }) {
 
     const navigate = useNavigate();
     function handleClick() {
@@ -44,7 +44,7 @@ export default function AddressPage() {
         <input type="text" name="lng" className='AddressPage-input-latlng' />
         </div>
 
-        <button className='AddressPage-btn'>Next Step</button>
+        <button className='AddressPage-btn' onClick={() => setShowPage('ImagesPage')}>Next Step</button>
 
         </div>
         </form>

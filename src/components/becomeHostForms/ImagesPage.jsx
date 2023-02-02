@@ -4,7 +4,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import {HiPlus} from "react-icons/hi"
 import { useNavigate} from "react-router-dom";
 
-export default function ImagesPage() {
+export default function ImagesPage({ setShowPage }) {
 
 
     const navigate = useNavigate();
@@ -35,7 +35,7 @@ export default function ImagesPage() {
 
         <div className='ImagesPage-bot-div'>
         <label className='ImagesPage-bot-label'>Upload images somewhere and paste link</label>
-        <button className='ImagesPage-btn'>Next step</button>
+        <button className='ImagesPage-btn' onClick={() => setShowPage('SpaceInfoPage')}>Next step</button>
     
         </div>
         

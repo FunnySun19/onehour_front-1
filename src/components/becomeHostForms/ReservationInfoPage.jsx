@@ -3,7 +3,7 @@ import "./reservationInfoPage.css";
 import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate} from "react-router-dom";
 
-export default function ReservationInfoPage() {
+export default function ReservationInfoPage({ setShowPage }) {
 
     const navigate = useNavigate();
     function handleClick() {
@@ -36,7 +36,7 @@ export default function ReservationInfoPage() {
         <input type="text" name="available_to" className='ReservationInfoPage-input-available' />
         </div>
 
-        <button className='ReservationInfoPage-btn'>Finish</button>
+        <button className='ReservationInfoPage-btn' onClick={() => setShowPage('FinishPage')}>Finish</button>
         </div>
     </form>
 

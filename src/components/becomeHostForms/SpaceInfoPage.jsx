@@ -4,7 +4,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate} from "react-router-dom";
 
 
-export default function SpaceInfoPage() {
+export default function SpaceInfoPage({ setShowPage }) {
 
     const navigate = useNavigate();
     function handleClick() {
@@ -31,7 +31,7 @@ export default function SpaceInfoPage() {
         <label className='SpaceInfoPage-label' >Detailed description</label>
         <textarea type="text" name="detail_desc" className='SpaceInfoPage-textarea2'/>
 
-        <button className='SpaceInfoPage-btn'>Next step</button>
+        <button className='SpaceInfoPage-btn' onClick={() => setShowPage('ReservationInfoPage')}>Next step</button>
         </div>
 
 
