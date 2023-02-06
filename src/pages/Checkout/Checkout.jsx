@@ -212,7 +212,7 @@ export default function Checkout() {
           <p className="address-p">{space.address}</p>
           <MapContainer
             className="checkout-map"
-            center={[44.804, 20.4651]}
+            center={[space.lat, space.lng]}
             zoom={13}
           >
             <TileLayer
