@@ -99,3 +99,16 @@
     width: 300px;
     margin-left: 14%;
 }
+.p-error{
+    color: #CC3333;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 0;
+    margin-top: -25px;
+}
+.error-div{
+    height: 20px;
+    width: 100%;
+    display: flex;
+  justify-content: space-between;
+}

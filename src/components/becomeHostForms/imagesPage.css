@@ -89,3 +89,10 @@
     width: 300px;
     height: 40px;
 }
+.p-error{
+    color: #CC3333;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 0;
+    margin-top: -25px;
+}

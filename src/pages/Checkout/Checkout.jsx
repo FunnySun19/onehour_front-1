@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
 import L from "leaflet";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { addRent } from "../../features/backendRoutes/rentSlice";
 import Input from "../../components/Input/Input";
 import { toast } from "react-toastify";
@@ -63,16 +63,12 @@ export default function Checkout() {
       setHours(0);
     }
   };
-
   const DefaultIcon = L.icon({
     iconUrl: icon,
     shadowUrl: iconShadow,
   });
-
   const totalCost = space.price * hours;
-
   const dispatch = useDispatch();
-
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
     const { value, name } = e.target;
@@ -91,9 +87,7 @@ export default function Checkout() {
       }
     });
   };
-
   const { id } = useParams();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     validateForm();
@@ -154,8 +148,16 @@ export default function Checkout() {
       required: true,
     },
   ];
+  let renderMap = Object.entries(space).length > 0 ;
 
-  return (
+  useEffect(()=>{
+    if(!renderMap){
+      navigate("/");
+      return;
+    }
+  })
+ 
+  return  (
     <div className="checkout-div">
       <Topbar />
       <div className="checkout-top">
@@ -210,9 +212,9 @@ export default function Checkout() {
           <p>{space.detailed_description}</p>
           <h4 className="address-h4">Address</h4>
           <p className="address-p">{space.address}</p>
-          <MapContainer
+          {renderMap && <MapContainer
             className="checkout-map"
-            center={[space.lat, space.lng]}
+            center={[space?.lat, space?.lng]}
             zoom={13}
           >
             <TileLayer
@@ -226,9 +228,9 @@ export default function Checkout() {
             >
               <Popup>{space.name}</Popup>
             </Marker>
-          </MapContainer>
+          </MapContainer>}
         </div>
       </div>
     </div>
-  );
+  ) ;
 }

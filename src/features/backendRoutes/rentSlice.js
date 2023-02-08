@@ -1,6 +1,6 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
-import { baseUrl } from '../axios';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
+import { baseUrl } from "../axios";
 
 const initialState = {
   singleRent: {},
@@ -9,11 +9,11 @@ const initialState = {
 };
 
 export const addRent = createAsyncThunk(
-  'rent/addRent',
+  "rent/addRent",
 
   async (rent, thunkAPI) => {
     try {
-      const resp = await baseUrl.post('rent/', rent, thunkAPI);
+      const resp = await baseUrl.post("rent/", rent, thunkAPI);
 
       return resp.data;
     } catch (error) {
@@ -23,13 +23,13 @@ export const addRent = createAsyncThunk(
 );
 
 const rentSlice = createSlice({
-  name: 'rent',
+  name: "rent",
   initialState,
   extraReducers: {
     [addRent.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
       state.rent = [...state.rent, payload];
-      toast.success('Space added');
+      toast.success("Space added");
     },
     [addRent.pending]: (state) => {
       state.isLoading = true;
