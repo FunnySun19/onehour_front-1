@@ -79,7 +79,13 @@
     margin-top: 10px;
     width: 360px;
     height: 40px;
+    transition: .2s ease;
 }
+
+.SpaceInfoPage-btn:hover{
+    background-color: #7d2c47;
+}
+
 .p-error{
     color: #CC3333;
     font-size: 13px;

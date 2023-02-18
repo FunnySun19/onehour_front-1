@@ -98,7 +98,13 @@
     height: 40px;
     width: 300px;
     margin-left: 14%;
+    transition: .2s ease;
 }
+
+.AddressPage-btn:hover{
+    background-color: #7d2c47;
+}
+
 .p-error{
     color: #CC3333;
     font-size: 13px;

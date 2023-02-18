@@ -41,7 +41,6 @@ export default function (props) {
               <RangePicker
                 size="large"
                 className='date-selector'
-                renderExtraFooter={() => 'Press OK to confirm'}
                 format="DD/MM/YYYY HH:00" 
                 showTime={{ format: "HH"}}
                 onChange={onChangeRange} />

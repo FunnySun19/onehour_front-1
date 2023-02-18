@@ -116,7 +116,6 @@ export default function Apartment() {
                 size="large"
                 style={{border:"2px solid #AB3B61"}} 
                 className="apartment-date"
-                renderExtraFooter={() => 'Press OK to confirm'}
                 format='DD/MM/YYYY HH:00'
                 showTime={{ format: 'HH' }}
                 onChange={onChangeRange}

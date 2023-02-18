@@ -101,7 +101,13 @@
     width: 350px;
     height: 40px;
     margin-left: 5%;
+    transition: .2s ease;
 }
+
+.ReservationInfoPage-btn:hover{
+    background-color: #7d2c47;
+}
+
 .p-error{
     color: #CC3333;
     font-size: 13px;

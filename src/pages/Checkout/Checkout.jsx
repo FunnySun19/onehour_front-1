@@ -175,7 +175,6 @@ export default function Checkout() {
                 <RangePicker
                   size="large"
                   className="chechkout-date"
-                  renderExtraFooter={() => 'Press OK to confirm'}
                   format="DD/MM/YYYY HH"
                   showTime={{ format: "HH"}}
                   disabledDate={(current) => {
