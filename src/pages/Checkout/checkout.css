@@ -42,6 +42,7 @@
 }
 .chechkout-date{
    width: 310px;
+   max-height: 40px;
    margin-right: 16px;
    background-color: #FAF4F0;
    border-color: #123D6A;
@@ -53,18 +54,11 @@
 .booking-period-span {
     margin-bottom: 7px;
 }
-.surename-span{
-    margin-bottom: 7px;
-}
-.name-span{
-    margin-bottom: 7px;
-}
+
 .phone-span{
     margin-bottom: 7px;
 }
-.email-span{
-    margin-bottom: 7px;
-}
+
 .cost-span{
     font-size: 20px;
     font-weight: bold;
@@ -80,24 +74,6 @@
     margin-bottom: 30px;
 }
 /* checkout left inputs */
-.surename-input{
-    margin-bottom: 10px;
-    width: 307px;
-    height: 32px;
-    border-color: #123D6A;
-    border-inline-color: #123D6A;
-    border-radius: 5px;
-    background-color: #FAF4F0;
-}
-.name-input{
-    margin-bottom: 10px;
-    width: 307px;
-    height: 32px;
-    border-color: #123D6A;
-    border-inline-color: #123D6A;
-    border-radius: 5px;
-    background-color: #FAF4F0;
-}
 .phone-input{
     margin-bottom: 10px;
     width: 307px;
@@ -107,15 +83,7 @@
     border-radius: 5px;
     background-color: #FAF4F0;
 }
-.email-input{
-    margin-bottom: 10px;
-    width: 307px;
-    height: 32px;
-    border-color: #123D6A;
-    border-inline-color: #123D6A;
-    border-radius: 5px;
-    background-color: #FAF4F0;
-}
+
 .confirm-btn{
     width: 307px;
     height: 38px;

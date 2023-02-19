@@ -112,39 +112,12 @@ export default function Checkout() {
   const inputs = [
     {
       id: 1,
-      name: "last_name",
-      type: "text",
-      errorMessage:
-        "Surname should be 3-16 characters and shouldn't include any special character!",
-      label: "Surname",
-      pattern: "^[A-Za-z0-9]{3,16}$",
-      required: true,
-    },
-    {
-      id: 2,
-      name: "first_name",
-      type: "text",
-      errorMessage:
-        "Surname should be 3-16 characters and shouldn't include any special character!",
-      label: "Name",
-      pattern: "^[A-Za-z0-9]{3,16}$",
-      required: true,
-    },
-    {
-      id: 3,
       name: "phone",
       type: "text",
-      errorMessage: "Please enter phone number!",
-      label: "Phone",
+      errorMessage:
+        "Phone number should be 4-18 numbers and shouldn't include any special character!",
+      label: "Phone Number",
       pattern: "^[0-9]{6,16}$",
-      required: true,
-    },
-    {
-      id: 4,
-      name: "email",
-      type: "email",
-      errorMessage: "It should be a valid email address!",
-      label: "Email",
       required: true,
     },
   ];
@@ -165,11 +138,11 @@ export default function Checkout() {
         <span className="back-span" onClick={handleClick}>
           Back
         </span>
-        <h2 className="checkout-h2">Confirmation and payment</h2>
+        <h2 className="checkout-h2">Booking and payment</h2>
       </div>
       <div className="checkout-wrapper">
         <div className="checkout-left">
-          <span className="booking-period-span">Booking period</span>
+          <span className="booking-period-span">Rent period</span>
 
                 <div className="booking-period-div">
                 <RangePicker
@@ -202,7 +175,7 @@ export default function Checkout() {
             {space.price}$ x {hours} hours
           </span>
           <button className="confirm-btn" type="submit" onClick={handleSubmit}>
-            Book Now
+            BOOK NOW
           </button>
         </div>
 
