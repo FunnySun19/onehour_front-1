@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./topbar.css"
 import Logo from "../../assets/img/logo.png"
 import { DatePicker, Select } from 'antd';
@@ -7,15 +7,19 @@ import { Link } from "react-router-dom";
 import moment from 'moment/moment';
 
 export default function (props) {
+
+  const [dateFrom, setDateFrom] = useState(null);
+  const [dateTo, setDateTo] = useState(null);
+
   const { RangePicker } = DatePicker;
   
   const onChangeRange = (dates, dateStrings) => {
     if (dates) {
-        console.log(encodeURIComponent(moment(dateStrings[0], 'DD/MM/YYYY HH').format()));
-        console.log(encodeURIComponent(moment(dateStrings[1], 'DD/MM/YYYY HH').format()))
+      setDateFrom(encodeURIComponent(moment(dateStrings[0], 'DD/MM/YYYY HH').format()));
+      setDateTo(encodeURIComponent(moment(dateStrings[1], 'DD/MM/YYYY HH').format()))
     } else {
-        console.log(null);
-        console.log(null);
+      setDateFrom(null);
+      setDateTo(null);
     }
 };
 
