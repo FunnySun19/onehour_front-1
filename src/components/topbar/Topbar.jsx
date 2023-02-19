@@ -42,6 +42,7 @@ export default function (props) {
                 size="large"
                 className='date-selector'
                 format="DD/MM/YYYY HH:00" 
+                disabledDate={current => current < moment().add(-1, 'days')}
                 showTime={{ format: "HH"}}
                 onChange={onChangeRange} />
             
