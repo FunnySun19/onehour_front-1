@@ -34,8 +34,8 @@ export default function AddressPage({ formData, setFormData, setShowPage }) {
           "Address should be in the format 'StreetName 123'"
         )
         .required("Required"),
-      lat: Yup.number().required("Latitude is required"),
-      lng: Yup.number().required("Longitude is required"),
+      lat: Yup.number(),
+      lng: Yup.number(),
     }),
     onSubmit: (values) => {
       setFormData(values);
