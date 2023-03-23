@@ -1,0 +1,28 @@
+.my-bookings-main-div{
+    height: 100vh;
+    width: 100%;
+    color: #123D6A;
+    background-color: #FAF4F0;
+}
+.my-bookings-header-div{
+    display: flex;
+    align-items: center;
+  
+}
+.my-bookings-back-icon{
+    color: #AB3B61;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    margin-left: 4%;
+}
+.my-bookings-back-span{
+    font-size: 15px;
+    cursor: pointer;
+    margin-right: 35%;
+}
+.my-bookings-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

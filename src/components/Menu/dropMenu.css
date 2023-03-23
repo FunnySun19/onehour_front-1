@@ -1,0 +1,86 @@
+.menu-wrapper{
+    display: grid;
+    position: absolute;
+    z-index: 999;
+    margin-left: 60%;    
+    color: #000;
+    width: 197px;
+    height: 40px;
+    background-color: #fff; 
+    border-radius: 5px;
+    
+}
+.drop-menu{
+    border-radius: 5px;
+    height: 40px;
+    border: 1px solid gray ;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    background-color: #fff; 
+}
+.menu-span{
+    margin-top: 6%;
+    margin-left: 6%;
+}
+.menu-icon{
+    margin-top: 5%;
+    margin-right: 2%;
+}
+.menu-div{
+    display: grid;
+    border: 1px solid gray ;
+    margin-top: 0%;
+    background-color: #FFF;
+    border-radius: 5px;
+}
+.menu-option1{
+    height: 30px;
+    cursor: pointer;
+}
+.menu-option1:hover{
+    background-color: #e0e0e0;
+}
+.menu-paragraph1{
+    margin-left: 6%;
+    margin-top: 3%;  
+}
+.menu-paragraph{
+    margin-left: 1%;
+    margin-top: 3%;
+    margin-left: 30%;
+}
+.menu-option2{
+    height: 30px;
+    cursor: pointer;
+}
+.menu-option2:hover{
+    background-color: #e0e0e0;
+}
+.menu-option3{
+    height: 30px;
+    cursor: pointer;
+}
+.menu-option3:hover{
+    background-color: #e0e0e0;
+}
+.menu-option4{
+    height: 30px;
+    cursor: pointer;
+}
+.menu-option4:hover{
+    background-color: #e0e0e0;
+}
+.menu-option5{
+    height: 30px;
+    cursor: pointer;
+}
+.menu-option5:hover{
+    background-color: #e0e0e0;
+}
+.menu-div-span{
+    color: gray;
+    margin-top: 4%;
+    margin-bottom: 1%;
+    margin-left: 4%;
+}

@@ -5,48 +5,45 @@ import "leaflet/dist/leaflet.css";
 import Topbar from "../../components/topbar/Topbar";
 import Flat from "../../components/flats/Flat";
 import icon from "leaflet/dist/images/marker-icon.png";
-import iconShadow from "leaflet/dist/images/marker-shadow.png";
 import L from "leaflet";
-import {  useState } from "react";
-import {usePaginate} from "../../hooks/usePaginate"
+import { useState } from "react";
+import { usePaginate } from "../../hooks/usePaginate";
 import { Link } from "react-router-dom";
 
 export default function Home() {
   const [params, setParams] = useState({
     offset: 0,
-  limit: 10,
-  city:"",
-    
+    limit: 10,
+    city: "",
   });
   const [data, setData] = useState([]);
 
-
   const DefaultIcon = L.icon({
     iconUrl: icon,
-    shadowUrl: iconShadow,
+    iconSize: [20, 30],
+
+    iconAnchor: [10, 30],
   });
 
   const LatLong = [44.804, 20.4651];
 
   const handleScroll = (e) => {
-    const { scrollHeight, scrollTop, clientHeight } = e.currentTarget
-    const bottom = Math.abs(scrollHeight - clientHeight - scrollTop) < 10
-
-     
+    const { scrollHeight, scrollTop, clientHeight } = e.currentTarget;
+    const bottom = Math.abs(scrollHeight - clientHeight - scrollTop) < 10;
 
     if (bottom) {
       setParams((prev) => {
         const copy = { ...prev };
-      copy.offset = copy.offset + copy.limit;
-      return copy;
+        copy.offset = copy.offset + copy.limit;
+        return copy;
       });
     }
   };
-  usePaginate("space/", params, setData)
+  usePaginate("space/", params, setData);
 
   return (
     <div className="home-container">
-      <Topbar status={"show"} setParams={setParams} setData={setData}/>
+      <Topbar status={"show"} setParams={setParams} setData={setData} />
       <div className="home-content">
         <div className="flat-container">
           <div className="flatwrapper" onScroll={handleScroll}>
@@ -66,18 +63,17 @@ export default function Home() {
                   position={[item.lat, item.lng]}
                   icon={DefaultIcon}
                 >
-                  <Popup >
+                  <Popup offset={[0, -30]}>
                     <div className="popup-div">
-
-                   
-                  <Link to={`/space/${item.id}`} className="popup-link">
-                     <h4 className="popup-h-name">{item.name}</h4> 
-                     </Link>
-                    <span className="popup-span-city">{item.address}</span>     
-                    <span className="popup-span-price">{item.price + "$ "}per day</span>
-    
+                      <Link to={`/space/${item.id}`} className="popup-link">
+                        <h4 className="popup-h-name">{item.name}</h4>
+                      </Link>
+                      <span className="popup-span-city">{item.address}</span>
+                      <span className="popup-span-price">
+                        {item.price + "$ "}per hour
+                      </span>
                     </div>
-                    </Popup>
+                  </Popup>
                 </Marker>
               ))}
           </MapContainer>

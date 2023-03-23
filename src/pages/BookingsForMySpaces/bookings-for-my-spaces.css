@@ -1,0 +1,28 @@
+.bookings-for-myspace-main-div{
+    height: 100vh;
+    width: 100%;
+    color: #123D6A;
+    background-color: #FAF4F0;
+}
+.bookings-for-myspace-header-div{
+    display: flex;
+    align-items: center;
+  
+}
+.bookings-for-myspace-back-icon{
+    color: #AB3B61;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    margin-left: 4%;
+}
+.bookings-for-myspace-back-span{
+    font-size: 15px;
+    cursor: pointer;
+    margin-right: 33%;
+}
+.bookings-for-myspace-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

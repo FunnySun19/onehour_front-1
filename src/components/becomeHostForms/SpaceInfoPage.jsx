@@ -14,13 +14,13 @@ export default function SpaceInfoPage({ formData, setFormData, setShowPage }) {
   const formik = useFormik({
     initialValues: {
       name: "",
-      area: "",
+      phone_number: "",
       short_description: "",
       detailed_description: "",
     },
     validationSchema: Yup.object({
       name: Yup.string().required("Required"),
-      area: Yup.number().required("Required"),
+      phone_number: Yup.number().required("Required"),
       short_description: Yup.string()
         .max(100, "Short description cannot be more than 100 characters")
         .required("Required"),
@@ -29,8 +29,8 @@ export default function SpaceInfoPage({ formData, setFormData, setShowPage }) {
         .required("Required"),
     }),
     onSubmit: (values) => {
-      setFormData({ ...formData, ...values });
-      setShowPage("ReservationInfoPage");
+      setFormData(values);
+      setShowPage("AddressPage");
     },
   });
 
@@ -45,11 +45,23 @@ export default function SpaceInfoPage({ formData, setFormData, setShowPage }) {
           <span className="SpaceInfoPage-back-span" onClick={handleClick}>
             Back
           </span>
-          <h2 className="SpaceInfoPage-h2">Space Info</h2>
+          <h2 className="SpaceInfoPage-h2">Space and owner info</h2>
         </div>
 
         <div className="SpaceInfoPage-center-div">
-          <label className="SpaceInfoPage-label">Name</label>
+        <label className="SpaceInfoPage-label">Registrated phone number</label>
+          <input
+            type="text"
+            name="phone_number"
+            className="SpaceInfoPage-input"
+            onBlur={formik.handleBlur}
+            value={formik.values.phone_number}
+            onChange={formik.handleChange}
+          />
+          {formik.touched.phone_number && formik.errors.phone_number ? (
+            <p className="p-error">You can only enter numbers</p>
+          ) : null}
+          <label className="SpaceInfoPage-label">Space name</label>
           <input
             type="text"
             name="name"
@@ -61,18 +73,7 @@ export default function SpaceInfoPage({ formData, setFormData, setShowPage }) {
           {formik.touched.name && formik.errors.name ? (
             <p className="p-error">{formik.errors.name}</p>
           ) : null}
-          <label className="SpaceInfoPage-label">Space area</label>
-          <input
-            type="text"
-            name="area"
-            className="SpaceInfoPage-input"
-            onBlur={formik.handleBlur}
-            value={formik.values.area}
-            onChange={formik.handleChange}
-          />
-          {formik.touched.area && formik.errors.area ? (
-            <p className="p-error">You can only enter numbers</p>
-          ) : null}
+        
           <label className="SpaceInfoPage-label">Short description</label>
           <textarea
             type="text"
@@ -101,7 +102,7 @@ export default function SpaceInfoPage({ formData, setFormData, setShowPage }) {
           ) : null}
 
           <button className="SpaceInfoPage-btn" type="submit">
-            Next step
+          NEXT STEP
           </button>
         </div>
       </form>

@@ -4,7 +4,7 @@ import { baseUrl } from "../axios";
 
 const initialState = {
   singleRent: {},
-  allRents: {},
+  allRents: [],
   isLoading: false,
 };
 
@@ -28,16 +28,15 @@ const rentSlice = createSlice({
   extraReducers: {
     [addRent.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
-      state.rent = [...state.rent, payload];
-      toast.success("Space added");
+      state.allRents = [...state.allRents, payload];
     },
     [addRent.pending]: (state) => {
       state.isLoading = true;
     },
     [addRent.rejected]: (state, { payload }) => {
       state.isLoading = false;
-      console.log(payload);
       toast.error(payload.response.data.detail[1].msg);
+      toast.error(payload.response.data.detail);
     },
   },
 });

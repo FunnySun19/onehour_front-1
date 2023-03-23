@@ -12,7 +12,7 @@ export default function ReservationInfoPage({
   setFormData,
   setShowPage,
 }) {
-  const dispatch = useDispatch();
+  
   const navigate = useNavigate();
   function handleClick() {
     navigate(-1);
@@ -39,15 +39,9 @@ export default function ReservationInfoPage({
         )
         .required("Required"),
     }),
-    onSubmit: async (values) => {
+    onSubmit:  (values) => {
       setFormData({ ...formData, ...values });
-      await dispatch(
-        addSpace({
-          ...formData,
-          ...values,
-        })
-      );
-      setShowPage("FinishPage");
+      setShowPage("ImagesPage");
     },
   });
 
@@ -62,7 +56,7 @@ export default function ReservationInfoPage({
           <span className="ReservationInfoPage-back-span" onClick={handleClick}>
             Back
           </span>
-          <h2 className="ReservationInfoPage-h2">Reservation Info</h2>
+          <h2 className="ReservationInfoPage-h2">Booking info</h2>
         </div>
 
         <div className="ReservationInfoPage-center-div">
@@ -122,7 +116,7 @@ export default function ReservationInfoPage({
             </div>
           </div>
           <button className="ReservationInfoPage-btn" type="submit">
-            Finish
+            NEXT STEP
           </button>
         </div>
       </form>

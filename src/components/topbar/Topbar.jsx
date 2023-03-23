@@ -1,24 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./topbar.css"
 import Logo from "../../assets/img/logo.png"
-import { DatePicker, Select } from 'antd';
-import Menu from "../../assets/img/menu.png"
+import { DatePicker, Select} from 'antd';
 import { Link } from "react-router-dom";
-import moment from 'moment/moment';
+import DropMenu from '../Menu/DropMenu';
 
 export default function (props) {
   const { RangePicker } = DatePicker;
-  
-  const onChangeRange = (dates, dateStrings) => {
-    if (dates) {
-        console.log(encodeURIComponent(moment(dateStrings[0], 'DD/MM/YYYY HH').format()));
-        console.log(encodeURIComponent(moment(dateStrings[1], 'DD/MM/YYYY HH').format()))
-    } else {
-        console.log(null);
-        console.log(null);
-    }
-};
 
+  
   const handleSelect = (value,name) =>{
     props.setData([]);
     props.setParams(prev =>{
@@ -27,7 +17,6 @@ export default function (props) {
       return copy;
     })
   }
-
 
 
   return (
@@ -44,7 +33,7 @@ export default function (props) {
                 renderExtraFooter={() => 'Press OK to confirm'}
                 format="DD/MM/YYYY HH:00" 
                 showTime={{ format: "HH"}}
-                onChange={onChangeRange} />
+                 />
             
               <Select  placeholder="Select City" name="city" onChange={(value)=>handleSelect(value,"city")} 
               className='city-selector'size='large' showSearch
@@ -54,8 +43,8 @@ export default function (props) {
                   label: 'Krusevac',
                 },
                 {
-                  value: 'Ivanovo',
-                  label: 'Ivanovo',
+                  value: 'Novi Sad',
+                  label: 'Novi Sad',
                 }
               ]}/>
             <Select    placeholder="Select Type" className='type-selector'size='large'options={[
@@ -66,10 +55,16 @@ export default function (props) {
                 {
                   value: 'Type 2',
                   label: 'Type 2',
-                }
+                },
+                
+                
               ]}/>
         </div>}
        
+        <DropMenu/>
+        
     </div>
   )
 }
+
+

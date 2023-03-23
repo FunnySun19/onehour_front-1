@@ -1,4 +1,3 @@
-/* eslint-disable import/no-anonymous-default-export */
 import "./checkout.css";
 import Topbar from "../../components/topbar/Topbar";
 import { IoIosArrowBack } from "react-icons/io";
@@ -22,10 +21,7 @@ export default function Checkout() {
   const [dateTo, setDateTo] = useState(null);
   const [state, setState] = useState({});
   const [values, setValues] = useState({
-    last_name: "",
-    first_name: "",
-    phone: "",
-    email: "",
+    phone_number: "",
   });
   let isFormValid = true;
 
@@ -40,12 +36,6 @@ export default function Checkout() {
 
   const onChangeRange = (dates, dateStrings) => {
     if (dates) {
-      setDateFrom(
-        encodeURIComponent(moment(dateStrings[0], "DD/MM/YYYY HH").format())
-      );
-      setDateTo(
-        encodeURIComponent(moment(dateStrings[1], "DD/MM/YYYY HH").format())
-      );
       setDateFrom(moment(dateStrings[0], 'DD/MM/YYYY HH').format('YYYY-MM-DDTHH:mmZ'));
       setDateTo(moment(dateStrings[1], 'DD/MM/YYYY HH').format('YYYY-MM-DDTHH:mmZ'));
       setDateRange(dates);
@@ -97,7 +87,8 @@ export default function Checkout() {
       const resp = await dispatch(
         addRent({
           ...state,
-          space_id: id,
+       //   space_id: id,
+          space_id: "118ff544-cbbe-4cb0-917a-aaf5ecfc4f4d",
           datetime_from: dateFrom,
           datetime_to: dateTo,
         })
@@ -112,39 +103,11 @@ export default function Checkout() {
   const inputs = [
     {
       id: 1,
-      name: "last_name",
+      name: "phone_number",
       type: "text",
-      errorMessage:
-        "Surname should be 3-16 characters and shouldn't include any special character!",
-      label: "Surname",
-      pattern: "^[A-Za-z0-9]{3,16}$",
-      required: true,
-    },
-    {
-      id: 2,
-      name: "first_name",
-      type: "text",
-      errorMessage:
-        "Surname should be 3-16 characters and shouldn't include any special character!",
-      label: "Name",
-      pattern: "^[A-Za-z0-9]{3,16}$",
-      required: true,
-    },
-    {
-      id: 3,
-      name: "phone",
-      type: "text",
-      errorMessage: "Please enter phone number!",
+      errorMessage: "Please enter valid phone number!",
       label: "Phone",
       pattern: "^[0-9]{6,16}$",
-      required: true,
-    },
-    {
-      id: 4,
-      name: "email",
-      type: "email",
-      errorMessage: "It should be a valid email address!",
-      label: "Email",
       required: true,
     },
   ];
@@ -175,7 +138,6 @@ export default function Checkout() {
                 <RangePicker
                   size="large"
                   className="chechkout-date"
-                  renderExtraFooter={() => 'Press OK to confirm'}
                   format="DD/MM/YYYY HH"
                   showTime={{ format: "HH"}}
                   disabledDate={(current) => {

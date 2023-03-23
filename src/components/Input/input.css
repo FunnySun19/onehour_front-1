@@ -10,7 +10,7 @@
 .checkout-input{
     margin-bottom: 10px;
     width: 307px;
-    height: 32px;
+    height: 30px;
     border-color: #123D6A;
     border-inline-color: #123D6A;
     border-radius: 5px;
@@ -19,12 +19,15 @@
 .checkout-span{
     font-size: 12px;
     padding: 3px;
-    color: red;
+    font-weight: bold;
+    color: #AB3B61;
     display: none;
+    width: 305px;
+    height: 10px;
 }
 
 .checkout-input:invalid[focused="true"]{
-    border: 1px solid red;
+    border: 1px solid #AB3B61;
 }
 
 .checkout-input:invalid[focused="true"] ~ .checkout-span{

@@ -10,7 +10,7 @@ import FinishPage from "../../components/becomeHostForms/FinishPage";
 
 export default function Host() {
   const [formData, setFormData] = useState({});
-  const [showPage, setShowPage] = useState("AddressPage");
+  const [showPage, setShowPage] = useState("SpaceInfoPage");
 
   return (
     <div className="main-host-div">

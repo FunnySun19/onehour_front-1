@@ -6,6 +6,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 export default function AddressPage({ formData, setFormData, setShowPage }) {
+  
   const navigate = useNavigate();
   function handleClick() {
     navigate(-1);
@@ -16,7 +17,7 @@ export default function AddressPage({ formData, setFormData, setShowPage }) {
       country: "",
       city: "",
       address: "",
-      //not space - area:"",
+      area:"",
       lat: "",
       lng: "",
     },
@@ -34,12 +35,15 @@ export default function AddressPage({ formData, setFormData, setShowPage }) {
           "Address should be in the format 'StreetName 123'"
         )
         .required("Required"),
-      lat: Yup.number().required("Latitude is required"),
-      lng: Yup.number().required("Longitude is required"),
+        area: Yup.number()
+    .typeError("Please enter only numbers")
+    .required("Area is required"),
+      lat: Yup.number(),
+      lng: Yup.number(),
     }),
     onSubmit: (values) => {
-      setFormData(values);
-      setShowPage("ImagesPage");
+      setFormData({ ...formData, ...values });
+      setShowPage("ReservationInfoPage");
     },
   });
 
@@ -54,7 +58,7 @@ export default function AddressPage({ formData, setFormData, setShowPage }) {
           <span className="AddressPage-back-span" onClick={handleClick}>
             Back
           </span>
-          <h2 className="AddressPage-h2">Become a host</h2>
+          <h2 className="AddressPage-h2">Space location</h2>
         </div>
 
         <div className="AddressPage-center-div">
@@ -94,14 +98,18 @@ export default function AddressPage({ formData, setFormData, setShowPage }) {
           {formik.touched.address && formik.errors.address ? (
             <p className="p-error">{formik.errors.address}</p>
           ) : null}
-          <label className="AddressPage-label">Area</label>
+           <label className="AddressPage-label">Area</label>
           <input
             type="text"
             name="area"
-            className="AddressPage-input"
+            onBlur={formik.handleBlur}
             value={formik.values.area}
             onChange={formik.handleChange}
+            className="AddressPage-input"
           />
+          {formik.touched.area && formik.errors.area ? (
+            <p className="p-error">{formik.errors.area}</p>
+          ) : null}
         </div>
 
         <div className="AddressPage-bot-div">
@@ -145,7 +153,7 @@ export default function AddressPage({ formData, setFormData, setShowPage }) {
             type="submit"
             onClick={formik.handleSubmit}
           >
-            Next Step
+            NEXT STEP
           </button>
         </div>
       </form>
