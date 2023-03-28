@@ -21,7 +21,7 @@ export default function DropMenu() {
     navigate("/sign_up");
   };
   const handleNavigate2 = () => {
-    navigate("/rent/tenant");
+    navigate("/booking/tenant");
   };
   const handleNavigate3 = () => {
     navigate("/create_space");
@@ -30,7 +30,7 @@ export default function DropMenu() {
     navigate("/my_space");
   };
   const handleNavigate5 = () => {
-    navigate("/rent/owner");
+    navigate("/booking/owner");
   };
 
   return (

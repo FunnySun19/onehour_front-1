@@ -3,17 +3,17 @@ import { toast } from "react-toastify";
 import { baseUrl } from "../axios";
 
 const initialState = {
-  singleRent: {},
-  allRents: [],
+  singleBooking: {},
+  allBookings: [],
   isLoading: false,
 };
 
-export const addRent = createAsyncThunk(
-  "rent/addRent",
+export const addBooking = createAsyncThunk(
+  "booking/addBooking",
 
-  async (rent, thunkAPI) => {
+  async (booking, thunkAPI) => {
     try {
-      const resp = await baseUrl.post("rent/", rent, thunkAPI);
+      const resp = await baseUrl.post("booking/", booking, thunkAPI);
 
       return resp.data;
     } catch (error) {
@@ -22,18 +22,18 @@ export const addRent = createAsyncThunk(
   }
 );
 
-const rentSlice = createSlice({
-  name: "rent",
+const bookingSlice = createSlice({
+  name: "booking",
   initialState,
   extraReducers: {
-    [addRent.fulfilled]: (state, { payload }) => {
+    [addBooking.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
-      state.allRents = [...state.allRents, payload];
+      state.allBookings = [...state.allBookings, payload];
     },
-    [addRent.pending]: (state) => {
+    [addBooking.pending]: (state) => {
       state.isLoading = true;
     },
-    [addRent.rejected]: (state, { payload }) => {
+    [addBooking.rejected]: (state, { payload }) => {
       state.isLoading = false;
       toast.error(payload.response.data.detail[1].msg);
       toast.error(payload.response.data.detail);
@@ -41,4 +41,4 @@ const rentSlice = createSlice({
   },
 });
 
-export default rentSlice.reducer;
+export default bookingSlice.reducer;

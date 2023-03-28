@@ -10,7 +10,7 @@ import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
 import L from "leaflet";
 import { useState, useEffect } from "react";
-import { addRent } from "../../features/backendRoutes/rentSlice";
+import { addBooking } from "../../features/backendRoutes/bookingSlice";
 import Input from "../../components/Input/Input";
 import { toast } from "react-toastify";
 
@@ -85,7 +85,7 @@ export default function Checkout() {
       toast.warn("Please fill all fields!");
     } else {
       const resp = await dispatch(
-        addRent({
+        addBooking({
           ...state,
        //   space_id: id,
           space_id: "118ff544-cbbe-4cb0-917a-aaf5ecfc4f4d",
@@ -132,7 +132,7 @@ export default function Checkout() {
       </div>
       <div className="checkout-wrapper">
         <div className="checkout-left">
-          <span className="booking-period-span">Rent period</span>
+          <span className="booking-period-span">Booking period</span>
 
                 <div className="booking-period-div">
                 <RangePicker

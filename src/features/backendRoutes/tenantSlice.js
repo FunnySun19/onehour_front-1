@@ -3,16 +3,16 @@ import { toast } from "react-toastify";
 import { baseUrl } from "../axios";
 
 const initialState = {
-  tenantRent: [],
+  tenantBooking: [],
   isLoading: false,
 };
 
-export const getTenantRent = createAsyncThunk(
-  "space/tenantRent",
+export const getTenantBooking = createAsyncThunk(
+  "space/tenantBooking",
   async (phoneNumber, thunkAPI) => {
     // if it has errors add slash / after tenant
     try {
-      const resp = await baseUrl.get("rent/tenant", {
+      const resp = await baseUrl.get("booking/tenant", {
         params: { phone_number: phoneNumber },
       });
       return resp.data;
@@ -26,14 +26,14 @@ const tenantSlice = createSlice({
   name: "tenant",
   initialState,
   extraReducers: {
-    [getTenantRent.pending]: (state) => {
+    [getTenantBooking.pending]: (state) => {
       state.isLoading = true;
     },
-    [getTenantRent.fulfilled]: (state, { payload }) => {
+    [getTenantBooking.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
-      state.tenantRent = payload;
+      state.tenantBooking = payload;
     },
-    [getTenantRent.rejected]: (state, { payload }) => {
+    [getTenantBooking.rejected]: (state, { payload }) => {
       state.isLoading = false;
     },
   },

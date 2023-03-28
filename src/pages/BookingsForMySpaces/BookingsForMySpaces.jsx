@@ -5,18 +5,18 @@ import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import Myspaces from "../../components/myspaces/Myspaces";
 import { useDispatch, useSelector } from "react-redux";
-import { getOwnerRents } from "../../features/backendRoutes/spaceOwnerSlice";
+import { getOwnerBookings } from "../../features/backendRoutes/spaceOwnerSlice";
 
 export default function BookingsForMySpaces() {
   const navigate = useNavigate();
   function handleClick() {
     navigate(-1);
   }
-  const { ownerRents, isLoading } = useSelector((state) => state.owner);
+  const { ownerBookings, isLoading } = useSelector((state) => state.owner);
   const dispatch = useDispatch();
   //  const { params } = useParams(); handle it later
   useEffect(() => {
-    dispatch(getOwnerRents("79999111111"));
+    dispatch(getOwnerBookings("79999111111"));
   }, []);
 
   return (
@@ -36,7 +36,7 @@ export default function BookingsForMySpaces() {
         {isLoading ? (
           <p>Loading...</p>
         ) : (
-          ownerRents.map((space) => <Myspaces space={space} key={space.id} />)
+          ownerBookings.map((space) => <Myspaces space={space} key={space.id} />)
         )}
       </div>
     </div>

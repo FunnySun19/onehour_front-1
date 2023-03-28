@@ -5,7 +5,7 @@ import { baseUrl } from "../axios";
 const initialState = {
   ownerSpaces: [],
   isLoading: false,
-  ownerRents: [],
+  ownerBookings: [],
 };
 
 export const getOwnerSpaces = createAsyncThunk(
@@ -22,11 +22,11 @@ export const getOwnerSpaces = createAsyncThunk(
   }
 );
 
-export const getOwnerRents = createAsyncThunk(
-  "rent/ownerRents",
+export const getOwnerBookings = createAsyncThunk(
+  "booking/ownerBookings",
   async (phoneNumber, thunkAPI) => {
     try {
-      const resp = await baseUrl.get("rent/owner", {
+      const resp = await baseUrl.get("booking/owner", {
         params: { phone_number: phoneNumber },
       });
       return resp.data;
@@ -51,14 +51,14 @@ const spaceOwnerSlice = createSlice({
       state.isLoading = false;
     },
 
-    [getOwnerRents.pending]: (state) => {
+    [getOwnerBookings.pending]: (state) => {
       state.isLoading = true;
     },
-    [getOwnerRents.fulfilled]: (state, { payload }) => {
+    [getOwnerBookings.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
-      state.ownerRents = payload;
+      state.ownerBookings = payload;
     },
-    [getOwnerRents.rejected]: (state, { payload }) => {
+    [getOwnerBookings.rejected]: (state, { payload }) => {
       state.isLoading = false;
     },
   },
