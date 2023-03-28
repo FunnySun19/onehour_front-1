@@ -8,36 +8,36 @@
 .checkout-top{
     display: flex;
     align-items: center;
-    
+    justify-content: center;
 }
 .checkout-wrapper{
     display: flex;
-
+    justify-content: center;
+    align-items: center;
+    margin-top: 2%;
 }
 .back-icon{
     color: #AB3B61;
     height: 30px;
     width: 30px;
-    margin-left: 114px;
     cursor: pointer;
 }
 .back-span{
     font-size: 15px;
     cursor: pointer;
+    margin-right: 35%;
 }
 .checkout-h2{
-    margin-left: 410px;
+    margin-right: 35%;
     font-size: 24px;
     
 }
 
 .checkout-left{
-    margin-left: 208px;
     display: grid;
     font: 15px;
 }
 .booking-period-div{
-    display: flex;
     margin-bottom: 20px;
 }
 .chechkout-date{
@@ -49,20 +49,6 @@
    border-inline-color: #123D6A;
    border-radius: 5px;
 }
-
-/* checkout left spans */
-.booking-period-span {
-    margin-bottom: 7px;
-}
-
-.phone-span{
-    margin-bottom: 7px;
-}
-
-.cost-span{
-    font-size: 20px;
-    font-weight: bold;
-}
 .price-span{
     color: #AB3B61;
     font-size: 24px;
@@ -73,17 +59,6 @@
     opacity: 50%;
     margin-bottom: 30px;
 }
-/* checkout left inputs */
-.phone-input{
-    margin-bottom: 10px;
-    width: 307px;
-    height: 32px;
-    border-color: #123D6A;
-    border-inline-color: #123D6A;
-    border-radius: 5px;
-    background-color: #FAF4F0;
-}
-
 .confirm-btn{
     width: 307px;
     height: 38px;
@@ -93,7 +68,10 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: .2s ease;
+    margin-bottom: 60%;
+}
+.confirm-btn:hover{
+    background-color: #792742;
 }
 
 .confirm-btn:hover{
@@ -101,7 +79,7 @@
 }
 
 .checkout-right{
-    margin-left: 250px;
+    margin-left: 20%;
 }
 .description-h4{
     margin-top: 0;

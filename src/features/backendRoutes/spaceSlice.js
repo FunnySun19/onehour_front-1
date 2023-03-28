@@ -14,7 +14,6 @@ export const getSpaces = createAsyncThunk(
   async (params, thunkAPI) => {
     try {
       const resp = await baseUrl.get("space/", { params });
-
       return resp.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -27,7 +26,6 @@ export const addSpace = createAsyncThunk(
   async (space, thunkAPI) => {
     try {
       const resp = await baseUrl.post("space/", space, thunkAPI);
-      // if there is any bugs add slash / after "space"
       return resp.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -51,8 +49,9 @@ export const deleteSpace = createAsyncThunk(
 export const getSpacesById = createAsyncThunk(
   "space/getSpace",
   async (id, thunkAPI) => {
+    
     try {
-      const resp = await baseUrl.get("space/" + id + "/");
+      const resp = await baseUrl.get("space/", { params: { id } });
       return resp.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -84,8 +83,9 @@ const spaceSlice = createSlice({
 
       toast.success("Space added");
     },
-    [addSpace.rejected]: (state) => {
+    [addSpace.rejected]: (state, { payload }) => {
       state.isLoading = false;
+      toast.error(payload.response.data.detail);
     },
     [deleteSpace.pending]: (state) => {
       state.isLoading = true;
@@ -99,12 +99,10 @@ const spaceSlice = createSlice({
       state.isLoading = false;
       console.log(payload);
     },
-    [getSpacesById.pending]: (state) => {
-      state.isLoading = true;
-    },
     [getSpacesById.fulfilled]: (state, { payload }) => {
+      console.log(payload)
       state.isLoading = false;
-      state.singleSpace = payload;
+      state.singleSpace = payload[0];
     },
     [getSpacesById.rejected]: (state, { payload }) => {
       state.isLoading = false;

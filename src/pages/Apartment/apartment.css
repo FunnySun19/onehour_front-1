@@ -14,17 +14,20 @@
 }
 .apartment-left{
     margin-top: 0.5%;
-    margin-left: 3%;
+    margin-left: 10%;
     width: 50%;
     height: 100%;
 }
 .apartment-right{
-    margin-top: 0.5%;
-    margin-left: 10%;
+    
+    margin-left: 7%;
     display: grid;
     width: 50%;
     height: 100%;
-
+}
+.apartment-right-bot{
+    margin-top: 0%;
+    display: grid;
 }
 .apratment-h3{
     font-size: 24px;
@@ -33,7 +36,18 @@
 }
 .apartment-desc{
     font-size: 15px;
-    line-height: 25px;
+    line-height: 20px;
+    width: 370px;
+    height: 20px;
+    
+}
+.apartment-description{
+    font-size: 15px;
+    line-height: 20px;
+    width: 370px;
+    height: 210px;
+   
+    
 }
 .apartment-specification{
     font-weight: bold;
@@ -70,7 +84,7 @@
 .book-now-btn{
     height: 44px;
     margin-top: 20px;
-    width: 510px;
+    width: 410px;
     border: none;
     border-radius: 5px;
     background-color: #AB3B61;
@@ -87,8 +101,9 @@
 
 
 .aprtment-left-top{
-margin-bottom: 30px;
-display: flex;
+    margin-top: 2%;
+    margin-left: 3%;
+    display: flex;
 }
 .back-icon-apartment{
     color: #AB3B61;

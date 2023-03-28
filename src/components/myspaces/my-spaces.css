@@ -1,0 +1,149 @@
+.space-landlord-main-div{
+    color: #123D6A;
+    width: 900px;
+    background-color: #FAF4F0;
+    border: 2px solid #6567AC;
+    border-radius: 5px;
+    margin-top: 3%;
+}
+.space-landlord-top-div{
+    margin-top: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 4%;
+    margin-right: 5%;
+}
+.space-landlord-time-span{
+    
+    font-weight: bold;
+}
+.space-landlord-name-span{
+    font-weight: bold;
+}
+.space-landlord-total-price-span{
+    font-weight: bold;
+}
+.space-landlord-cancel-btn{
+    width: 130px;
+    height: 40px;
+    background-color: #AB3B61;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 0.8%;
+}
+.space-landlord-cancel-btn:hover{
+    background-color: #963253;
+}
+.space-landlord-bot-div{
+    display: flex;
+    margin-top: 3%;
+    align-items: center;
+    margin-left: 4%;
+    margin-right: 5%;
+    margin-bottom: 3%;
+}
+.space-landlord-from-span{
+    font-weight: bold;
+    font-size: 14px;
+}
+.space-landlord-date-from-span{
+    width: 150px;
+    font-size: 14px;
+}
+.space-landlord-price-span{
+    font-weight: bold;
+    margin-left: 7.7%;
+    font-size: 18px;
+}
+.space-landlord-contacts-btn{
+    width: 130px;
+    height: 40px;
+    cursor:pointer;
+    margin-left: 20%;
+    background-color: #FAF4F0;
+    border: 2px solid #6567AC;
+    color: #6567AC;
+    font-weight: bold;
+    border-radius: 5px;
+    align-items: center;
+    display: flex;
+    justify-content: center
+}
+.space-landlord-icon-down{
+   color: #6567AC;
+}
+.space-landlord-icon-up{
+    color: #6567AC;
+}
+.space-landlord-bot-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+.space-landlord-to-span{
+    font-weight: bold;
+}
+.space-landlord-bot-wrapper2{
+    display: flex;
+    flex-direction: column;
+    margin-left: 2%;
+}
+.space-landlord-date-to-span{
+    width: 150px;
+    font-size: 14px;
+}
+.space-landlord-bot-wrapper3{
+    margin-left: 2.3%;
+    display: flex;
+    flex-direction: column;
+}
+.space-landlord-street-span{
+    width: 210px;
+    height: 30px;
+    margin-left: 10.5%;
+    font-size: 12px;
+}
+.space-landlord-address-span{
+    margin-left: 10.5%;
+    font-weight: bold;
+    font-size: 14px;
+}
+.space-landlord-hidden-top-div{
+    display: flex;
+    align-items: center;
+    margin-left: 4%;
+    font-size: 14px;
+}
+.space-landlord-hidden-name{
+    font-weight: bold;
+}
+.space-landlord-hidden-phone{
+    font-weight: bold;
+    margin-left: 23%;
+}
+.space-landlord-hidden-contact{
+    font-weight: bold;
+    margin-left: 15.2%;
+}
+.space-landlord-hidden-bot-div{
+    display: flex;
+    align-items: center;
+    margin-left: 4%;
+    margin-top: 2%;
+    font-size: 14px;
+    margin-bottom: 2%;
+}
+.space-landlord-hidden-name-span{
+    width: 180px;
+}
+.space-landlord-hidden-phone-span{
+    width: 180px;
+    margin-left: 6.5%;
+}
+.space-landlord-hidden-contact-span{ 
+    width: 330px;
+    margin-left: 6%;
+}

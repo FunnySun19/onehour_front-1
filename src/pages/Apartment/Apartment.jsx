@@ -2,30 +2,25 @@ import './apartment.css';
 import Topbar from '../../components/topbar/Topbar';
 import ApartmentImg from '../../assets/img/apartment.jpg';
 import SimpleImageSlider from 'react-simple-image-slider';
-import { DatePicker, Select } from 'antd';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { getSpacesById } from '../../features/backendRoutes/spaceSlice';
 import { useParams } from 'react-router-dom';
 import { IoIosArrowBack } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import moment from 'moment';
+
 
 export default function Apartment() {
-  const [apartmentData, setApartmentData] = useState(null);
+  
 
   const dispatch = useDispatch();
-  const { id } = useParams();
-
+  const { params } = useParams();
+  const {singleSpace} = useSelector(state=>state.space)
+  console.log(singleSpace);
   useEffect(() => {
-    dispatch(getSpacesById(id))
-      .then((response) => {
-        setApartmentData(response.payload);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    dispatch(getSpacesById(params))
+
   }, []);
 
 
@@ -35,28 +30,11 @@ export default function Apartment() {
     navigate(-1);
   }
 
-  const { RangePicker } = DatePicker;
-
-  const onChangeRange = (dates, dateStrings) => {
-    if (dates) {
-      console.log(
-        encodeURIComponent(moment(dateStrings[0], 'DD/MM/YYYY HH').format())
-      );
-      console.log(
-        encodeURIComponent(moment(dateStrings[1], 'DD/MM/YYYY HH').format())
-      );
-    } else {
-      console.log(null);
-      console.log(null);
-    }
-  };
 
   return (
     <div className='apartment-div'>
       <Topbar status={'hide'} />
-      <div className='apartment-container'>
-        <div className='apartment-left'>
-          <div className='aprtment-left-top'>
+      <div className='aprtment-left-top'>
             <IoIosArrowBack
               className='back-icon-apartment'
               onClick={handleClick}
@@ -65,12 +43,16 @@ export default function Apartment() {
               Back
             </span>
           </div>
+      <div className='apartment-container'>
+        
+        <div className='apartment-left'>
+         
 
-          {apartmentData ? (
+          {singleSpace ? (
             <SimpleImageSlider
               width={794}
               height={503}
-              images={apartmentData.image_urls}
+              images={[singleSpace.image_urls]}
               showBullets={true}
               showNavs={true}
               autoPlay={true}
@@ -78,40 +60,28 @@ export default function Apartment() {
           ) : null}
         </div>
         <div className='apartment-right'>
-          {apartmentData ? (
-            <div key={apartmentData.id}>
-              <h3 className='apratment-h3'>{apartmentData.name}</h3>
-              <p className='apartment-desc'>City:{apartmentData.city}</p>
-              <p className='apartment-desc'>Country:{apartmentData.country}</p>
-              <p className='apartment-desc'>{apartmentData.address}</p>
-              <p className='apartment-desc'>
-                {apartmentData.detailed_description}{' '}
+          {singleSpace ? (
+            <div key={singleSpace.id}>
+              <h3 className='apratment-h3'>{singleSpace.name}</h3>
+              <p className='apartment-desc'>City:{singleSpace.city}</p>
+              <p className='apartment-desc'>Country:{singleSpace.country}</p>
+              <p className='apartment-desc'>{singleSpace.address}</p>
+              <p className='apartment-description'>
+              {singleSpace.detailed_description}
               </p>
-              <p className='apartment-desc'>
-                {apartmentData.detailed_description}{' '}
-              </p>
-              <p className='apartment-desc'>
-                {apartmentData.detailed_description}{' '}
-              </p>
-              <p className='apartment-desc'>
-                {apartmentData.detailed_description}{' '}
-              </p>
-              <p className='apartment-desc'>
-                {apartmentData.detailed_description}{' '}
-              </p>
-              <span className='apartment-specification'>
-                {apartmentData.detailed_description}
-              </span>
             </div>
           ) : null}
          
              
-             <div className="apartment-rightbot">
-             {apartmentData ?(
-             <span className="apartment-price">{apartmentData.price}$</span>
-             ) : null}
+             <div className="apartment-right-bot">
+              <div>
+
+             {singleSpace ?(
+               <span className="apartment-price">{singleSpace.price}$ </span>
+               ) : null}
              <span className="perNight-span">per hour</span>
-             <div className="date-wrapper">
+               </div>
+             {/* <div className="date-wrapper">
              <RangePicker
                 size="large"
                 style={{border:"2px solid #AB3B61"}} 
@@ -144,8 +114,8 @@ export default function Apartment() {
                 className='select-people'
                 placeholder='Number or people'
               />
-            </div>
-            <Link to={`/checkout/${id}`} style={{ textDecoration: 'none' }}>
+            </div> */}
+            <Link to={`/checkout/${params}`} style={{ textDecoration: 'none' }}>
               <button className='book-now-btn'>Book now !</button>
             </Link>
           </div>

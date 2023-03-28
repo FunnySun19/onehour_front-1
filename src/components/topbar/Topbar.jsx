@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import "./topbar.css"
 import Logo from "../../assets/img/logo.png"
-import { DatePicker, Select } from 'antd';
-import Menu from "../../assets/img/menu.png"
+import { DatePicker, Select} from 'antd';
 import { Link } from "react-router-dom";
-import moment from 'moment/moment';
+import DropMenu from '../Menu/DropMenu';
 
 export default function (props) {
 
@@ -12,17 +11,8 @@ export default function (props) {
   const [dateTo, setDateTo] = useState(null);
 
   const { RangePicker } = DatePicker;
-  
-  const onChangeRange = (dates, dateStrings) => {
-    if (dates) {
-      setDateFrom(encodeURIComponent(moment(dateStrings[0], 'DD/MM/YYYY HH').format()));
-      setDateTo(encodeURIComponent(moment(dateStrings[1], 'DD/MM/YYYY HH').format()))
-    } else {
-      setDateFrom(null);
-      setDateTo(null);
-    }
-};
 
+  
   const handleSelect = (value,name) =>{
     props.setData([]);
     props.setParams(prev =>{
@@ -31,7 +21,6 @@ export default function (props) {
       return copy;
     })
   }
-
 
 
   return (
@@ -48,7 +37,7 @@ export default function (props) {
                 format="DD/MM/YYYY HH:00" 
                 disabledDate={current => current < moment().add(-1, 'days')}
                 showTime={{ format: "HH"}}
-                onChange={onChangeRange} />
+                 />
             
               <Select  placeholder="Select City" name="city" onChange={(value)=>handleSelect(value,"city")} 
               className='city-selector'size='large' showSearch
@@ -58,8 +47,8 @@ export default function (props) {
                   label: 'Krusevac',
                 },
                 {
-                  value: 'Ivanovo',
-                  label: 'Ivanovo',
+                  value: 'Novi Sad',
+                  label: 'Novi Sad',
                 }
               ]}/>
             <Select    placeholder="Select Type" className='type-selector'size='large'options={[
@@ -70,10 +59,16 @@ export default function (props) {
                 {
                   value: 'Type 2',
                   label: 'Type 2',
-                }
+                },
+                
+                
               ]}/>
         </div>}
        
+        <DropMenu/>
+        
     </div>
   )
 }
+
+

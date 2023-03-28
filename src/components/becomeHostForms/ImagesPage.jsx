@@ -5,6 +5,8 @@ import { HiPlus } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { addSpace } from "../../features/backendRoutes/spaceSlice";
+import { useDispatch } from "react-redux";
 
 export default function ImagesPage({ formData, setFormData, setShowPage }) {
   const navigate = useNavigate();
@@ -12,22 +14,30 @@ export default function ImagesPage({ formData, setFormData, setShowPage }) {
     navigate(-1);
   }
 
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       image_urls1: "",
       image_urls2: "",
     },
     validationSchema: Yup.object({
-      image_urls1: Yup.string().url("Invalid URL").required("Required"),
-      image_urls2: Yup.string().url("Invalid URL").required("Required"),
+      image_urls1: Yup.string().url("Invalid URL"),
+      image_urls2: Yup.string().url("Invalid URL"),
     }),
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       setFormData({
         ...formData,
         ...values,
         image_urls: [values.image_urls1, values.image_urls2],
       });
-      setShowPage("SpaceInfoPage");
+      await dispatch(
+        addSpace({
+          ...formData,
+          ...values,
+          image_urls: [values.image_urls1, values.image_urls2]
+        })
+      );
+      setShowPage("FinishPage");
     },
   });
 
@@ -42,7 +52,7 @@ export default function ImagesPage({ formData, setFormData, setShowPage }) {
           <span className="ImagesPage-back-span" onClick={handleClick}>
             Back
           </span>
-          <h2 className="ImagesPage-h2">Become a host</h2>
+          <h2 className="ImagesPage-h2">Images</h2>
         </div>
 
         <div className="ImagesPage-center-div">
@@ -80,7 +90,7 @@ export default function ImagesPage({ formData, setFormData, setShowPage }) {
               Upload images somewhere and paste link
             </label>
             <button className="ImagesPage-btn" type="submit">
-              Next step
+              Finish
             </button>
           </div>
         </div>
