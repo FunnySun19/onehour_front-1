@@ -10,7 +10,7 @@ import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
 import L from "leaflet";
 import { useState, useEffect } from "react";
-import { addRent } from "../../features/backendRoutes/rentSlice";
+import { addBooking } from "../../features/backendRoutes/bookingSlice";
 import Input from "../../components/Input/Input";
 import { toast } from "react-toastify";
 
@@ -85,7 +85,7 @@ export default function Checkout() {
       toast.warn("Please fill all fields!");
     } else {
       const resp = await dispatch(
-        addRent({
+        addBooking({
           ...state,
        //   space_id: id,
           space_id: "118ff544-cbbe-4cb0-917a-aaf5ecfc4f4d",
@@ -128,7 +128,7 @@ export default function Checkout() {
         <span className="back-span" onClick={handleClick}>
           Back
         </span>
-        <h2 className="checkout-h2">Confirmation and payment</h2>
+        <h2 className="checkout-h2">Booking and payment</h2>
       </div>
       <div className="checkout-wrapper">
         <div className="checkout-left">
@@ -143,7 +143,16 @@ export default function Checkout() {
                   disabledDate={(current) => {
                     let fromDate = moment(space.available_from).format("YYYY-MM-DD");
                     let toDate = moment(space.available_to).format("YYYY-MM-DD");
-                    return current < moment(fromDate, "YYYY-MM-DD") || current > moment(toDate, "YYYY-MM-DD").add(1, 'days');
+                    if (current < fromDate) {
+                      // eslint-disable-next-line
+                    return current && current < moment(fromDate, "YYYY-MM-DD")
+                    // eslint-disable-next-line
+                      || current > moment(toDate, "YYYY-MM-DD").add(1, 'days');                      
+                    } else { return moment().add(-1, 'days')  >= current 
+                    // eslint-disable-next-line
+                      || current && current < moment(fromDate, "YYYY-MM-DD") 
+                      || current > moment(toDate, "YYYY-MM-DD").add(1, 'days')
+                    };
                   }}
                   onChange={onChangeRange} 
                   required/>
@@ -165,7 +174,7 @@ export default function Checkout() {
             {space.price}$ x {hours} hours
           </span>
           <button className="confirm-btn" type="submit" onClick={handleSubmit}>
-            Book Now
+            BOOK NOW
           </button>
         </div>
 

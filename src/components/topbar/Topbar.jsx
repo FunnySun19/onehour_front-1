@@ -4,8 +4,13 @@ import Logo from "../../assets/img/logo.png"
 import { DatePicker, Select} from 'antd';
 import { Link } from "react-router-dom";
 import DropMenu from '../Menu/DropMenu';
+import moment from 'moment';
 
 export default function (props) {
+
+  const [dateFrom, setDateFrom] = useState(null);
+  const [dateTo, setDateTo] = useState(null);
+
   const { RangePicker } = DatePicker;
 
   
@@ -30,8 +35,8 @@ export default function (props) {
               <RangePicker
                 size="large"
                 className='date-selector'
-                renderExtraFooter={() => 'Press OK to confirm'}
                 format="DD/MM/YYYY HH:00" 
+                disabledDate={current => current < moment().add(-1, 'days')}
                 showTime={{ format: "HH"}}
                  />
             

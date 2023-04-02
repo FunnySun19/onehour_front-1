@@ -33,11 +33,11 @@ export const onehourRoutes = [
     Component: MySpaces,
   },
   {
-    path: "/rent/tenant",
+    path: "/booking/tenant",
     Component: MyBookings,
   },
   {
-    path: "/rent/owner",
+    path: "/booking/owner",
     Component: BookingsForMySpaces,
   },
 ];

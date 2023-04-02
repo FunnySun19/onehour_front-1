@@ -86,8 +86,21 @@ export default function Apartment() {
                 size="large"
                 style={{border:"2px solid #AB3B61"}} 
                 className="apartment-date"
-                renderExtraFooter={() => 'Press OK to confirm'}
                 format='DD/MM/YYYY HH:00'
+                disabledDate={(current) => {
+                  let fromDate = moment(apartmentData.available_from).format("YYYY-MM-DD");
+                  let toDate = moment(apartmentData.available_to).format("YYYY-MM-DD");
+                  if (current < fromDate) {
+                    // eslint-disable-next-line
+                  return current && current < moment(fromDate, "YYYY-MM-DD")
+                  // eslint-disable-next-line
+                    || current > moment(toDate, "YYYY-MM-DD").add(1, 'days');                      
+                  } else { return moment().add(-1, 'days')  >= current 
+                  // eslint-disable-next-line
+                    || current && current < moment(fromDate, "YYYY-MM-DD") 
+                    || current > moment(toDate, "YYYY-MM-DD").add(1, 'days')
+                  };
+                }}
                 showTime={{ format: 'HH' }}
                 onChange={onChangeRange}
               />

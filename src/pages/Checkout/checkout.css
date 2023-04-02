@@ -42,6 +42,7 @@
 }
 .chechkout-date{
    width: 310px;
+   max-height: 40px;
    margin-right: 16px;
    background-color: #FAF4F0;
    border-color: #123D6A;
@@ -72,6 +73,11 @@
 .confirm-btn:hover{
     background-color: #792742;
 }
+
+.confirm-btn:hover{
+    background-color: #7d2c47;
+}
+
 .checkout-right{
     margin-left: 20%;
 }

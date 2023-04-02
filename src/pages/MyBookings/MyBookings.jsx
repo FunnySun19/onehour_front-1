@@ -5,20 +5,20 @@ import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import BookingTenant from "../../components/mybooking/BookingTenant";
 import { useDispatch, useSelector } from "react-redux";
-import { getTenantRent } from "../../features/backendRoutes/tenantSlice";
+import { getTenantBooking } from "../../features/backendRoutes/tenantSlice";
 
 export default function MyBookings() {
   const navigate = useNavigate();
   function handleClick() {
     navigate(-1);
   }
-  const { tenantRent, isLoading } = useSelector((state) => state.tenant);
+  const { tenantBooking, isLoading } = useSelector((state) => state.tenant);
   const dispatch = useDispatch();
   //  const { params } = useParams(); handle it later
   useEffect(() => {
-    dispatch(getTenantRent("79999111111"));
+    dispatch(getTenantBooking("79999111111"));
   }, []);
-  console.log(tenantRent);
+  console.log(tenantBooking);
 
   return (
     <div className="my-bookings-main-div">

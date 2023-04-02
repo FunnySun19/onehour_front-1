@@ -32,5 +32,9 @@
     margin-top: 10px;
     width: 360px;
     height: 40px;
-  
+    transition: .2s ease;
   }
+
+.FinishPage-btn:hover{
+    background-color: #7d2c47;
+}

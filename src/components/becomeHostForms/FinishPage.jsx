@@ -25,8 +25,8 @@ export default function FinishPage() {
         <h2 className="FinishPage-h2">
           Congratulations! Your space has been successfully created!
         </h2>
-        <h2 className="FinishPage-h2-2">Now it shows up in "my objects"</h2>
-        <button className="FinishPage-btn">CHECK “MY OBJECTS”</button>
+        <h2 className="FinishPage-h2-2">Now it shows up in "My spaces"</h2>
+        <button className="FinishPage-btn">CHECK ""MY SPACES"</button>
       </div>
     </div>
   );
