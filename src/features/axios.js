@@ -1,25 +1,22 @@
-import axios from 'axios'
-
+import axios from "axios";
+import Cookies from "universal-cookie";
 
 export const axiosRequestInterceptor = async (config) => {
-
-  const token = 1;
-
+  const cookies = new Cookies();
+  const token = await cookies.get("token");
   if (token) {
-    config.headers.Authorization = `Bearer ${token}`
+    config.headers.Authorization = `Bearer ${token}`;
   }
-  return config
-}
-
-
-
+  return config;
+};
 
 export const baseUrl = axios.create({
   baseURL: `${process.env.REACT_APP_API}`,
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
-})
-console.log(process.env.REACT_APP_API)
+});
 
-baseUrl.interceptors.request.use(axiosRequestInterceptor, (e) => Promise.reject(e))
+baseUrl.interceptors.request.use(axiosRequestInterceptor, (e) =>
+  Promise.reject(e)
+);

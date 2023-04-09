@@ -36,8 +36,12 @@ export default function Checkout() {
 
   const onChangeRange = (dates, dateStrings) => {
     if (dates) {
-      setDateFrom(moment(dateStrings[0], 'DD/MM/YYYY HH').format('YYYY-MM-DDTHH:mmZ'));
-      setDateTo(moment(dateStrings[1], 'DD/MM/YYYY HH').format('YYYY-MM-DDTHH:mmZ'));
+      setDateFrom(
+        moment(dateStrings[0], "DD/MM/YYYY HH").format("YYYY-MM-DDTHH:mmZ")
+      );
+      setDateTo(
+        moment(dateStrings[1], "DD/MM/YYYY HH").format("YYYY-MM-DDTHH:mmZ")
+      );
       setDateRange(dates);
       let date_from = new Date(
         moment(dateStrings[0], "DD.MM.YYYY HH").format("YYYY, MM, DD, HH:00")
@@ -87,8 +91,7 @@ export default function Checkout() {
       const resp = await dispatch(
         addBooking({
           ...state,
-       //   space_id: id,
-          space_id: "118ff544-cbbe-4cb0-917a-aaf5ecfc4f4d",
+          space_id: id,
           datetime_from: dateFrom,
           datetime_to: dateTo,
         })
@@ -106,21 +109,21 @@ export default function Checkout() {
       name: "phone_number",
       type: "text",
       errorMessage: "Please enter valid phone number!",
-      label: "Phone",
+      label: "Phone number",
       pattern: "^[0-9]{6,16}$",
       required: true,
     },
   ];
-  let renderMap = Object.entries(space).length > 0 ;
+  let renderMap = Object.entries(space).length > 0;
 
-  useEffect(()=>{
-    if(!renderMap){
+  useEffect(() => {
+    if (!renderMap) {
       navigate("/");
       return;
     }
-  })
- 
-  return  (
+  });
+
+  return (
     <div className="checkout-div">
       <Topbar />
       <div className="checkout-top">
@@ -132,31 +135,39 @@ export default function Checkout() {
       </div>
       <div className="checkout-wrapper">
         <div className="checkout-left">
-          <span className="booking-period-span">Booking period</span>
+          <span className="booking-period-span">Rent period</span>
 
-                <div className="booking-period-div">
-                <RangePicker
-                  size="large"
-                  className="chechkout-date"
-                  format="DD/MM/YYYY HH"
-                  showTime={{ format: "HH"}}
-                  disabledDate={(current) => {
-                    let fromDate = moment(space.available_from).format("YYYY-MM-DD");
-                    let toDate = moment(space.available_to).format("YYYY-MM-DD");
-                    if (current < fromDate) {
-                      // eslint-disable-next-line
-                    return current && current < moment(fromDate, "YYYY-MM-DD")
+          <div className="booking-period-div">
+            <RangePicker
+              size="large"
+              className="chechkout-date"
+              format="DD/MM/YYYY HH"
+              showTime={{ format: "HH" }}
+              disabledDate={(current) => {
+                let fromDate = moment(space.available_from).format(
+                  "YYYY-MM-DD"
+                );
+                let toDate = moment(space.available_to).format("YYYY-MM-DD");
+                if (current < fromDate) {
+                  // eslint-disable-next-line
+                  return (
+                    (current && current < moment(fromDate, "YYYY-MM-DD")) ||
                     // eslint-disable-next-line
-                      || current > moment(toDate, "YYYY-MM-DD").add(1, 'days');                      
-                    } else { return moment().add(-1, 'days')  >= current 
+                    current > moment(toDate, "YYYY-MM-DD").add(1, "days")
+                  );
+                } else {
+                  return (
+                    moment().add(-1, "days") >= current ||
                     // eslint-disable-next-line
-                      || current && current < moment(fromDate, "YYYY-MM-DD") 
-                      || current > moment(toDate, "YYYY-MM-DD").add(1, 'days')
-                    };
-                  }}
-                  onChange={onChangeRange} 
-                  required/>
-                </div>
+                    (current && current < moment(fromDate, "YYYY-MM-DD")) ||
+                    current > moment(toDate, "YYYY-MM-DD").add(1, "days")
+                  );
+                }
+              }}
+              onChange={onChangeRange}
+              required
+            />
+          </div>
 
           {inputs.map((input) => (
             <Input
@@ -180,28 +191,30 @@ export default function Checkout() {
 
         <div className="checkout-right">
           <h4 className="description-h4">Description</h4>
-          <p>{space.detailed_description}</p>
+          <p className="description-text">{space.detailed_description}</p>
           <h4 className="address-h4">Address</h4>
           <p className="address-p">{space.address}</p>
-          {renderMap && <MapContainer
-            className="checkout-map"
-            center={[space?.lat, space?.lng]}
-            zoom={13}
-          >
-            <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            <Marker
-              key={space.id}
-              position={[space.lat, space.lng]}
-              icon={DefaultIcon}
+          {renderMap && (
+            <MapContainer
+              className="checkout-map"
+              center={[space?.lat, space?.lng]}
+              zoom={13}
             >
-              <Popup>{space.name}</Popup>
-            </Marker>
-          </MapContainer>}
+              <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+              <Marker
+                key={space.id}
+                position={[space.lat, space.lng]}
+                icon={DefaultIcon}
+              >
+                <Popup>{space.name}</Popup>
+              </Marker>
+            </MapContainer>
+          )}
         </div>
       </div>
     </div>
-  ) ;
+  );
 }

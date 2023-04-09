@@ -10,34 +10,34 @@ import BookingsForMySpaces from "../pages/BookingsForMySpaces/BookingsForMySpace
 export const onehourRoutes = [
   {
     path: "/",
-    Component: Home,
+    Component: <Home />,
   },
   {
     path: "/checkout/:id",
-    Component: Checkout,
+    Component: <Checkout />,
   },
   {
     path: "/space/:id",
-    Component: Apartment,
+    Component: <Apartment />,
   },
   {
     path: "/create_space",
-    Component: Host,
+    Component: <Host />,
   },
   {
     path: "/sign_up",
-    Component: SignUp,
+    Component: <SignUp />,
   },
   {
     path: "/my_space",
-    Component: MySpaces,
+    Component: <MySpaces />,
   },
   {
     path: "/booking/tenant",
-    Component: MyBookings,
+    Component: <MyBookings />,
   },
   {
     path: "/booking/owner",
-    Component: BookingsForMySpaces,
+    Component: <BookingsForMySpaces />,
   },
 ];

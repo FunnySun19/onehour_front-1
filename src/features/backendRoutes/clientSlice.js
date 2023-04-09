@@ -54,7 +54,9 @@ const clientSlice = createSlice({
     [loginClient.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
       state.currentClient = payload;
-      toast.success("Successfully logged in!");
+      toast.success("Successfully logged in!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
     },
     [loginClient.pending]: (state) => {
       state.isLoading = true;

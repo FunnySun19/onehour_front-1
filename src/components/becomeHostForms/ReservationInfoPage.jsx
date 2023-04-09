@@ -3,16 +3,15 @@ import "./reservationInfoPage.css";
 import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
-import { addSpace } from "../../features/backendRoutes/spaceSlice";
-import { useDispatch } from "react-redux";
 import * as Yup from "yup";
+import { DatePicker } from "antd";
+import moment from "moment";
 
 export default function ReservationInfoPage({
   formData,
   setFormData,
   setShowPage,
 }) {
-  
   const navigate = useNavigate();
   function handleClick() {
     navigate(-1);
@@ -26,21 +25,18 @@ export default function ReservationInfoPage({
     },
     validationSchema: Yup.object({
       price: Yup.number().required("Required"),
-      available_from: Yup.string()
-        .matches(
-          /^\d{4}.\d{2}.\d{2}T\d{2}:\d{2}:\d{2}$/,
-          "date should be in format 'YYYY.MM.DDTHH:mm:ss'"
-        )
-        .required("Required"),
-      available_to: Yup.string()
-        .matches(
-          /^\d{4}.\d{2}.\d{2}T\d{2}:\d{2}:\d{2}$/,
-          "date should be in format 'YYYY.MM.DDTHH:mm:ss'"
-        )
-        .required("Required"),
+      available_from: Yup.date()
+        .nullable()
+        .required("Please enter correct date"),
+      available_to: Yup.date().nullable().required("Please enter correct date"),
     }),
-    onSubmit:  (values) => {
-      setFormData({ ...formData, ...values });
+    onSubmit: (values) => {
+      const formattedValues = {
+        ...values,
+        available_from: values.available_from.format("YYYY-MM-DDTHH:mmZ"),
+        available_to: values.available_to.format("YYYY-MM-DDTHH:mmZ"),
+      };
+      setFormData({ ...formData, ...formattedValues });
       setShowPage("ImagesPage");
     },
   });
@@ -86,25 +82,62 @@ export default function ReservationInfoPage({
           </div>
 
           <div className="ReservationInfoPage-input-div">
-            <input
-              type="text"
+            <DatePicker
               name="available_from"
-              className="ReservationInfoPage-input-available"
-              onBlur={formik.handleBlur}
+              required
+              style={{ marginRight: "5px", outline: "none", border: "none" }}
+              format="DD/MM/YYYY HH"
+              showTime={{ format: "HH" }}
+              disabledDate={(current) => {
+                return current && current < moment().startOf("day");
+              }}
+              disabledTime={(current) =>
+                current &&
+                (current < moment().startOf("day") || current > moment()) && {
+                  disabledHours: () =>
+                    [...Array(24).keys()].splice(0, moment().hour()),
+                }
+              }
+              onChange={(dateString) => {
+                formik.setFieldValue("available_from", dateString);
+                formik.handleChange();
+              }}
               value={formik.values.available_from}
-              onChange={formik.handleChange}
             />
-            <input
-              type="text"
+
+            <DatePicker
               name="available_to"
-              className="ReservationInfoPage-input-available"
+              required
+              style={{ outline: "none", border: "none" }}
+              format="DD/MM/YYYY HH"
+              showTime={{ format: "HH" }}
+              disabledDate={(current) => {
+                return (
+                  current &&
+                  current < moment(formik.values.available_from).startOf("day")
+                );
+              }}
+              disabledTime={(current) =>
+                current &&
+                current <
+                  moment(formik.values.available_from).startOf("day") && {
+                  disabledHours: () =>
+                    [...Array(24).keys()].splice(
+                      0,
+                      moment(formik.values.available_from).hour()
+                    ),
+                }
+              }
+              onChange={(dateString) => {
+                formik.setFieldValue("available_to", dateString);
+                formik.handleChange();
+              }}
               onBlur={formik.handleBlur}
               value={formik.values.available_to}
-              onChange={formik.handleChange}
             />
           </div>
           <div className="error-div">
-            <div style={{ width: "45%", marginLeft: "6%" }}>
+            <div style={{ width: "45%", marginLeft: "2%" }}>
               {formik.touched.available_from && formik.errors.available_from ? (
                 <p className="p-error">{formik.errors.available_from}</p>
               ) : null}

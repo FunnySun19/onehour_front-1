@@ -6,6 +6,9 @@
 
 .checkout-label{
     margin-bottom: 7px;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 22px;
 }
 .checkout-input{
     margin-bottom: 10px;

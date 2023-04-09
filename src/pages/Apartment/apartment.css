@@ -6,7 +6,6 @@
 }
 .apartment-container{
     display: flex;
-    margin-top: 30px;
     width: 100%;
     height: 100%;
     justify-content: center;
@@ -19,7 +18,6 @@
     height: 100%;
 }
 .apartment-right{
-    
     margin-left: 7%;
     display: grid;
     width: 50%;
@@ -47,7 +45,6 @@
     width: 370px;
     height: 210px;
    
-    
 }
 .apartment-specification{
     font-weight: bold;
@@ -71,7 +68,6 @@
 
 }
 .apartment-date{
-   
     width: 300px;
     height: 36px;
 }
@@ -97,8 +93,6 @@
 .book-now-btn:hover{
     background-color: #7d2c47;
 }
-
-
 
 .aprtment-left-top{
     margin-top: 2%;

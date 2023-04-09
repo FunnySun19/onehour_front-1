@@ -18,7 +18,7 @@ export default function DropMenu() {
   };
 
   const handleNavigate1 = () => {
-    navigate("/sign_up");
+    navigate("/");
   };
   const handleNavigate2 = () => {
     navigate("/booking/tenant");
@@ -52,7 +52,7 @@ export default function DropMenu() {
       {open && (
         <div className="menu-div">
           <div className="menu-option1" onClick={handleNavigate1}>
-            <p className="menu-paragraph1">Sign up</p>
+            <p className="menu-paragraph1">Home</p>
           </div>
           <span className="menu-div-span">For tenants</span>
           <div className="menu-option2" onClick={handleNavigate2}>

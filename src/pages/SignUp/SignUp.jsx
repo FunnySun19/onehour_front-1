@@ -8,10 +8,12 @@ import {
 } from "../../features/backendRoutes/clientSlice";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
   const dispatch = useDispatch();
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState(true);
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -58,6 +60,9 @@ export default function SignUp() {
       values.phone_number = parseInt(values.phone_number);
       dispatch(loginClient(JSON.stringify(values, null, 2)));
       resetForm();
+      setTimeout(() => {
+        navigate("/");
+      }, 1000);
     },
   });
 
@@ -169,7 +174,9 @@ export default function SignUp() {
             <div className="overlay">
               <div className="overlay-panel overlay-left">
                 <h1 className="h1Home">Already registered?</h1>
-                <p>Sign in to your account to continue!</p>
+                <p className="sign-in-description-paragraph">
+                  Sign in to your account to continue!
+                </p>
                 <button
                   className="ghost"
                   onClick={() => setActive((prev) => !prev)}
@@ -179,7 +186,9 @@ export default function SignUp() {
               </div>
               <div className="overlay-panel overlay-right">
                 <h1 className="h1Home">First time here?</h1>
-                <p>You can create an account to rent and rent out spaces!</p>
+                <p className="sign-up-description-paragraph">
+                  You can create an account to rent and rent out spaces!
+                </p>
                 <button
                   className="ghost q"
                   onClick={() => setActive((prev) => !prev)}

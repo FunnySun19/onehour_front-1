@@ -19,7 +19,6 @@
 }
 .button-container{
     width: 60%;
-    
     margin-right: 20%;
 }
 .date-selector{
@@ -35,4 +34,18 @@
 .type-selector{
     width: 200px;
     
+}
+.topbar-sign-in-btn{
+    position: absolute;
+    margin-left: 65%;
+    width: 77px;
+    height: 32px;
+    border: 2px solid #AB3B61;
+    border-radius: 5px;
+    cursor: pointer;
+    background: transparent;
+    font-weight: 800;
+    font-size: 15px;
+    line-height: 22px;
+    color: #AB3B61;
 }

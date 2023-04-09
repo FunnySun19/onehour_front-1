@@ -4,12 +4,22 @@
     color: #123D6A;
     width: 900px;
     display: flex;
-    height: 270px;
+    height: 310px;
     margin-top: 1%;
     border-radius: 10px;
 }
 .space-left-container{
     margin-left: 2%;
+}
+.space-left-h4{
+    font-weight: 800;
+    font-size: 15px;
+    line-height: 22px;
+}
+.space-right-h4{
+    font-weight: 800;
+    font-size: 15px;
+    line-height: 22px;
 }
 .space-right-container{
     margin-left: 5%;

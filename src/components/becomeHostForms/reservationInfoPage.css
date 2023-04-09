@@ -69,6 +69,7 @@
 }
 .ReservationInfoPage-input-div{
     width: 100%;
+    margin-top: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -100,7 +101,7 @@
     margin-top: 10px;
     width: 350px;
     height: 40px;
-    margin-left: 5%;
+    margin-left: 3%;
     transition: .2s ease;
 }
 
@@ -116,6 +117,7 @@
     margin-top: -25px;
 }
 .error-div{
+    margin-top: 30px;
     height: 20px;
     width: 100%;
     display: flex;

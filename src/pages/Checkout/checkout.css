@@ -28,14 +28,24 @@
     margin-right: 35%;
 }
 .checkout-h2{
-    margin-right: 35%;
+    margin-right: 40%;
     font-size: 24px;
-    
 }
 
 .checkout-left{
     display: grid;
     font: 15px;
+}
+.address-p{
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 22px;
+}
+.description-text{
+    width: 450px;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 22px;
 }
 .booking-period-div{
     margin-bottom: 20px;
@@ -77,14 +87,30 @@
 .confirm-btn:hover{
     background-color: #7d2c47;
 }
-
+.cost-span{
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 29px;
+}
 .checkout-right{
-    margin-left: 20%;
+    margin-left: 10%;
 }
 .description-h4{
-    margin-top: 0;
+    margin: 0;
+    font-weight: 800;
+    font-size: 15px;
+    line-height: 22px;
 }
 .address-h4{
+    margin-bottom: 10px;
+    font-weight: 800;
+    font-size: 15px;
+    line-height: 22px;
+}
+.booking-period-span{
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 22px;
     margin-bottom: 10px;
 }
 .address-p{

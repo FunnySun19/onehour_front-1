@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import { baseUrl } from "../axios";
 
 const initialState = {
-  singleSpace: {},
+  singleSpace: null,
   allSpaces: {},
   isLoading: false,
   spaces: [],
@@ -49,9 +49,9 @@ export const deleteSpace = createAsyncThunk(
 export const getSpacesById = createAsyncThunk(
   "space/getSpace",
   async (id, thunkAPI) => {
-    
     try {
       const resp = await baseUrl.get("space/", { params: { id } });
+      console.log(id);
       return resp.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -100,7 +100,7 @@ const spaceSlice = createSlice({
       console.log(payload);
     },
     [getSpacesById.fulfilled]: (state, { payload }) => {
-      console.log(payload)
+      console.log(payload);
       state.isLoading = false;
       state.singleSpace = payload[0];
     },

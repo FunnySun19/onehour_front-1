@@ -1,6 +1,4 @@
-*{
-    box-sizing: border-box;
-}
+
 .login-container{
     background-color: #FAF4F0;
     display: flex;
@@ -79,6 +77,24 @@ p{
 }
 .btnHome:focus{
     outline: none;
+}
+.h1Home{
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 35px;
+}
+.sign-in-description-paragraph{
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 22px;
+    text-align: center;
+}
+.sign-up-description-paragraph{
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 22px;
+    text-align: center;
+    width: 220px;
 }
 .ghost{
     background: transparent;
